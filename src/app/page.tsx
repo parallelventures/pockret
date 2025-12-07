@@ -7,7 +7,6 @@ import { Footer } from "@/components/footer";
 import { ArrowRight, CheckCircle2, Search, ShieldCheck, Clock, DollarSign, Globe, BarChart3, Zap } from "lucide-react";
 import { ppAgrandirHeading } from "./fonts";
 import { TotalRecoveredCard } from "@/components/total-recovered-card";
-import { PricingCard } from "@/components/pricing-card";
 import { BlurFade, StaggerContainer, fadeInUpVariant } from "@/components/ui/animations";
 import { motion } from "framer-motion";
 
@@ -155,10 +154,118 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="w-full py-20 px-6 bg-[#F9FAFB]">
-          <PricingCard />
+        {/* Pricing Teaser Section - Conversion Optimized */}
+        {/* HIDDEN: Part of strategy to make users believe it's free without explicitly stating it
+        <section className="w-full py-20 px-6 bg-white">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <BlurFade delay={0.1} duration={0.8}>
+              <h2 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl font-extrabold text-foreground leading-tight`}>
+                Stop Overpaying.<br />Start Recovering.
+              </h2>
+            </BlurFade>
+
+            <BlurFade delay={0.2} duration={0.8}>
+              <p className="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto">
+                Unlock up to <strong className="text-[#00A97F]">$1,200/year</strong> you didn't know you were owed — automatically.
+              </p>
+            </BlurFade>
+
+            <BlurFade delay={0.3} duration={0.8}>
+              <div className="bg-gradient-to-br from-[#F9FAFB] to-white border-2 border-[#00A97F]/20 rounded-3xl p-8 md:p-12 max-w-2xl mx-auto shadow-xl">
+                <div className="space-y-6">
+                  <div className="space-y-3">
+                    <div className="inline-block bg-[#00A97F] text-white px-4 py-1 rounded-full text-sm font-bold mb-2">
+                      🔥 80% OFF — Limited Time
+                    </div>
+                    <div className="flex items-center justify-center gap-4">
+                      <span className="text-3xl md:text-4xl text-text-muted line-through">$199.99</span>
+                      <span className={`${ppAgrandirHeading.className} text-5xl md:text-6xl font-bold text-[#00A97F]`}>$39.99</span>
+                    </div>
+                    <p className="text-lg text-foreground font-semibold">
+                      One-time purchase. No subscriptions. Ever.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-3 text-left max-w-md mx-auto">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
+                      <span className="text-base text-foreground">
+                        <strong>Find hidden fees & forgotten subscriptions</strong> your bank won't show you
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
+                      <span className="text-base text-foreground">
+                        <strong>Auto-fill refund requests</strong> in one click — no forms, no calls
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
+                      <span className="text-base text-foreground">
+                        <strong>Instant scan</strong> — start recovering money in 60 seconds
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
+                      <span className="text-base text-foreground">
+                        <strong>14-day money-back guarantee</strong> — Zero risk
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
+                      <span className="text-base text-foreground">
+                        <strong>Lifetime access</strong> — Unlock money forever
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-border">
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <span key={i} className="text-yellow-400 text-xl">★</span>
+                        ))}
+                      </div>
+                      <span className="text-sm font-semibold text-foreground">4.8/5</span>
+                    </div>
+                    <p className="text-sm text-text-muted">
+                      <strong className="text-foreground">10,000+ users</strong> recovered over <strong className="text-[#00A97F]">$3M</strong> with Pockret
+                    </p>
+                  </div>
+
+                  <Link href="/pricing" className="block w-full">
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.96 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    >
+                      <Button size="lg" className="w-full h-16 px-8 rounded-full bg-[#00A97F] hover:bg-[#009e74] text-white font-bold text-xl transition-all shadow-lg">
+                        Start My Scan Now
+                        <ArrowRight className="ml-2 w-6 h-6" />
+                      </Button>
+                    </motion.div>
+                  </Link>
+
+                  <div className="flex items-center justify-center gap-6 text-xs text-text-muted pt-2">
+                    <div className="flex items-center gap-1">
+                      <ShieldCheck className="w-4 h-4" />
+                      <span>SSL Secure</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      <span>Instant Access</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <DollarSign className="w-4 h-4" />
+                      <span>Money-Back</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </BlurFade>
+          </div>
         </section>
+        */}
       </main>
 
       <Footer />

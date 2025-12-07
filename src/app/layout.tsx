@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ppAgrandirHeading, ppAgrandirBody } from "./fonts";
+import { ppAgrandirHeading, sfProDisplayRegular } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Pockret - Find Your Forgotten Money",
@@ -15,7 +15,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ppAgrandirHeading.variable} ${ppAgrandirBody.variable} antialiased bg-background text-foreground font-sans`}
+        className={`${ppAgrandirHeading.variable} ${sfProDisplayRegular.variable} antialiased bg-background text-foreground`}
+        style={{ fontFamily: 'var(--font-sf-pro-regular), sans-serif' }}
       >
         {children}
       </body>
