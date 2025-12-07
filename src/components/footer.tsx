@@ -2,14 +2,20 @@
 
 import Link from 'next/link'
 import GodRaysComponent from './god-rays'
+import GodRaysMobile from './god-rays-mobile'
 import { sfProDisplay, ppAgrandirHeading } from '@/app/fonts'
 
 export function Footer() {
     return (
         <footer className={`${sfProDisplay.className} relative w-full bg-background py-20 mt-auto overflow-hidden min-h-[400px] flex items-center`}>
-            {/* God Rays Background Animation */}
-            <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-multiply">
+            {/* God Rays Background Animation - Desktop */}
+            <div className="hidden md:block absolute inset-0 pointer-events-none opacity-40 mix-blend-multiply">
                 <GodRaysComponent />
+            </div>
+
+            {/* God Rays Background Animation - Mobile */}
+            <div className="block md:hidden absolute inset-0 pointer-events-none opacity-40 mix-blend-multiply">
+                <GodRaysMobile />
             </div>
 
             {/* Footer Content */}
