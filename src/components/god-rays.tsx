@@ -9,5 +9,5 @@ import { GodRays } from '@paper-design/shaders-react';
  * on Dec 6, 2025 at 3:53 PM.
  */
 export default function GodRaysComponent() {
-    return <GodRays offsetX={0} offsetY={-0.55} intensity={0.8} spotty={0.15} midSize={0.2} midIntensity={0.4} density={0.1} bloom={0.4} speed={1.32} scale={0.84} frame={100828.34100006708} colorBack="#00000000" colors={['#A600FF6E', '#6200FFF0', '#FFFFFF', '#33FFF5']} colorBloom="#0000FF" className="w-full h-[500px] bg-transparent bg-no-repeat" />;
+    return <GodRays offsetX={0} offsetY={-0.55} intensity={0.8} spotty={0.15} midSize={0.2} midIntensity={0.4} density={0.1} bloom={0.4} speed={1.32} scale={0.84} frame={100828.34100006708} colorBack="#00000000" colors={['#64748B6E', '#0F172AF0', '#FFFFFF', '#2563EB']} colorBloom="#2563EB" className="w-full h-[500px] bg-transparent bg-no-repeat" />;
 }

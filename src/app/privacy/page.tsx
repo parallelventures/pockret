@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { ppAgrandirHeading } from "../fonts";
 
 export default function PrivacyPage() {
     return (
         <div className="min-h-screen flex flex-col bg-background">
             <Navbar />
             <main className="flex-1 container mx-auto px-4 py-12 max-w-4xl">
-                <h1 className="text-4xl font-bold mb-2">Privacy Policy – Pockret</h1>
+                <h1 className={`${ppAgrandirHeading.className} text-4xl font-bold mb-2`}>Privacy Policy – Pockret</h1>
                 <p className="text-sm text-gray-500 mb-8">Last updated: December 2025</p>
 
                 <div className="prose prose-gray max-w-none space-y-6 text-text-muted">
@@ -19,7 +20,7 @@ export default function PrivacyPage() {
                     </p>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">1. Who We Are</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>1. Who We Are</h2>
                         <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
                             <p><strong>Virtual World LLC</strong></p>
                             <p>1209 Mountain Road Place Northeast, Suite R<br />
@@ -32,10 +33,10 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">2. Information We Collect</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>2. Information We Collect</h2>
                         <p>We may collect the following categories of personal information:</p>
 
-                        <h3 className="text-xl font-medium text-foreground mt-4 mb-2">A. Information You Provide</h3>
+                        <h3 className={`${ppAgrandirHeading.className} text-xl font-medium text-foreground mt-4 mb-2`}>A. Information You Provide</h3>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Name</li>
                             <li>Email address</li>
@@ -44,7 +45,7 @@ export default function PrivacyPage() {
                             <li>Support requests</li>
                         </ul>
 
-                        <h3 className="text-xl font-medium text-foreground mt-4 mb-2">B. Automatically Collected Data</h3>
+                        <h3 className={`${ppAgrandirHeading.className} text-xl font-medium text-foreground mt-4 mb-2`}>B. Automatically Collected Data</h3>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Device information</li>
                             <li>IP address</li>
@@ -53,7 +54,7 @@ export default function PrivacyPage() {
                             <li>Usage analytics (pages visited, actions performed)</li>
                         </ul>
 
-                        <h3 className="text-xl font-medium text-foreground mt-4 mb-2">C. Optional Connected Data (Only With Explicit Consent)</h3>
+                        <h3 className={`${ppAgrandirHeading.className} text-xl font-medium text-foreground mt-4 mb-2`}>C. Optional Connected Data (Only With Explicit Consent)</h3>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Email-based subscription data (e.g., Gmail parsing)</li>
                             <li>Transaction metadata via third-party banking APIs</li>
@@ -66,7 +67,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">3. How We Use Your Information</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>3. How We Use Your Information</h2>
                         <p>We use your data to:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Operate and improve Pockret</li>
@@ -81,7 +82,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">4. Legal Basis (if Applicable)</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>4. Legal Basis (if Applicable)</h2>
                         <p>For users in the EU/EEA, we process personal data under:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Contract fulfillment</li>
@@ -92,7 +93,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">5. Sharing Your Information</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>5. Sharing Your Information</h2>
                         <p>We may share data with trusted processors:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li><strong>Stripe</strong> (payments)</li>
@@ -108,7 +109,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">6. Data Retention</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>6. Data Retention</h2>
                         <p>We retain your information only as long as necessary to:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Provide the service</li>
@@ -120,7 +121,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">7. Your Rights</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>7. Your Rights</h2>
                         <p>You may:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Access your data</li>
@@ -136,7 +137,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">8. Data Security</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>8. Data Security</h2>
                         <p>We apply strict technical and organizational measures:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Industry-standard encryption</li>
@@ -148,7 +149,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">9. International Transfers</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>9. International Transfers</h2>
                         <p>
                             Your data may be processed in the United States.<br />
                             We ensure appropriate protection for all transfers.
@@ -156,7 +157,7 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">10. Children's Privacy</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>10. Children's Privacy</h2>
                         <p>
                             Pockret is not intended for individuals under 18.<br />
                             We do not knowingly collect data from minors.
@@ -164,12 +165,12 @@ export default function PrivacyPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">11. Changes to This Policy</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>11. Changes to This Policy</h2>
                         <p>We may update this Privacy Policy and will notify users where required.</p>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">12. Contact</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>12. Contact</h2>
                         <p>
                             For questions or privacy requests:<br />
                             📧 <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a><br />

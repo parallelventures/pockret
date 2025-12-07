@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { ppAgrandirHeading } from "../fonts";
 
 export default function TermsPage() {
     return (
         <div className="min-h-screen flex flex-col bg-background">
             <Navbar />
             <main className="flex-1 container mx-auto px-4 py-12 max-w-4xl">
-                <h1 className="text-4xl font-bold mb-2">Terms of Service – Pockret</h1>
+                <h1 className={`${ppAgrandirHeading.className} text-4xl font-bold mb-2`}>Terms of Service – Pockret</h1>
                 <p className="text-sm text-gray-500 mb-8">Last updated: December 2025</p>
 
                 <div className="prose prose-gray max-w-none space-y-6 text-text-muted">
@@ -16,7 +17,7 @@ export default function TermsPage() {
                     </p>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">1. Overview</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>1. Overview</h2>
                         <p>
                             Pockret is operated by <strong>Virtual World LLC</strong> ("we", "us", "our").<br />
                             We provide tools that help users identify refunds, subscriptions, charges, and potential financial opportunities.
@@ -27,7 +28,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">2. Eligibility</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>2. Eligibility</h2>
                         <p>To use Pockret, you must:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Be 18 or older</li>
@@ -38,7 +39,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">3. Accounts</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>3. Accounts</h2>
                         <p>You are responsible for:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Maintaining confidentiality of login credentials</li>
@@ -49,7 +50,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">4. Payments & Billing</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>4. Payments & Billing</h2>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Payments are processed securely via <strong>Stripe</strong></li>
                             <li>Prices may vary by region</li>
@@ -62,7 +63,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">5. Refunds</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>5. Refunds</h2>
                         <p>Pockret offers a <strong>100% Money-Back Guarantee</strong> within 14 days if:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>You completed at least one scan</li>
@@ -73,7 +74,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">6. Service Limitations</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>6. Service Limitations</h2>
                         <p>We do not guarantee:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Specific refund amounts</li>
@@ -87,7 +88,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">7. User Conduct</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>7. User Conduct</h2>
                         <p>Users may not:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Manipulate the system</li>
@@ -99,7 +100,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">8. Third-Party Services</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>8. Third-Party Services</h2>
                         <p>Pockret may integrate with:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Gmail</li>
@@ -111,7 +112,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">9. Intellectual Property</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>9. Intellectual Property</h2>
                         <p>
                             All assets, logos, text, animations, UI, and content belong to <strong>Virtual World LLC</strong>.<br />
                             Unauthorized reproduction is prohibited.
@@ -119,7 +120,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">10. Disclaimer of Warranties</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>10. Disclaimer of Warranties</h2>
                         <p>Pockret is provided "as-is" without warranties of any kind.</p>
                         <p className="mt-2">We disclaim responsibility for:</p>
                         <ul className="list-disc pl-6 space-y-1">
@@ -131,7 +132,7 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">11. Limitation of Liability</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>11. Limitation of Liability</h2>
                         <p>
                             To the maximum extent permitted by law, Virtual World LLC is <strong>not liable</strong> for indirect, incidental, or consequential damages.
                         </p>
@@ -139,12 +140,12 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">12. Governing Law</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>12. Governing Law</h2>
                         <p>These terms are governed by the laws of <strong>New Mexico, USA</strong>.</p>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">13. Contact</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>13. Contact</h2>
                         <p>
                             📧 <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a><br />
                             📍 Virtual World LLC, Albuquerque, NM

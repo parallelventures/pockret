@@ -22,10 +22,10 @@ export function Navbar() {
         <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
-                    <span className={`${ppAgrandirHeading.className} text-2xl font-extrabold text-primary tracking-tight`}>Pockret</span>
+                    <span className={`${ppAgrandirHeading.className} text-2xl font-extrabold text-black tracking-tight`}>Pockret</span>
                 </Link>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 ml-auto">
                     <div className="hidden md:flex items-center gap-2 text-sm font-bold text-text-muted uppercase tracking-wide cursor-pointer hover:text-foreground transition-colors">
                         <span>US</span>
                         <span className="text-border">/</span>

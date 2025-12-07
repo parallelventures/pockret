@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { ppAgrandirHeading } from "../fonts";
 
 export default function PreferencesPage() {
     return (
         <div className="min-h-screen flex flex-col bg-background">
             <Navbar />
             <main className="flex-1 container mx-auto px-4 py-12 max-w-4xl">
-                <h1 className="text-4xl font-bold mb-2">Cookie Policy – Pockret</h1>
+                <h1 className={`${ppAgrandirHeading.className} text-4xl font-bold mb-2`}>Cookie Policy – Pockret</h1>
                 <p className="text-sm text-gray-500 mb-8">Last updated: December 2025</p>
 
                 <div className="prose prose-gray max-w-none space-y-6 text-text-muted">
@@ -15,33 +16,33 @@ export default function PreferencesPage() {
                     </p>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">1. What Are Cookies?</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>1. What Are Cookies?</h2>
                         <p>
                             Cookies are small files stored on your device to improve functionality, performance, and analytics.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">2. Types of Cookies We Use</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>2. Types of Cookies We Use</h2>
 
-                        <h3 className="text-xl font-medium text-foreground mt-6 mb-2">A. Essential Cookies</h3>
+                        <h3 className={`${ppAgrandirHeading.className} text-xl font-medium text-foreground mt-6 mb-2`}>A. Essential Cookies</h3>
                         <p>
                             Required for basic functionality (login, session, security).<br />
                             <strong>Cannot be disabled.</strong>
                         </p>
 
-                        <h3 className="text-xl font-medium text-foreground mt-6 mb-2">B. Analytics Cookies</h3>
+                        <h3 className={`${ppAgrandirHeading.className} text-xl font-medium text-foreground mt-6 mb-2`}>B. Analytics Cookies</h3>
                         <p>
                             Used to understand usage patterns and improve the experience.<br />
                             Examples: page interactions, conversion events.
                         </p>
 
-                        <h3 className="text-xl font-medium text-foreground mt-6 mb-2">C. Performance Cookies</h3>
+                        <h3 className={`${ppAgrandirHeading.className} text-xl font-medium text-foreground mt-6 mb-2`}>C. Performance Cookies</h3>
                         <p>
                             Help us optimize load speed and reliability.
                         </p>
 
-                        <h3 className="text-xl font-medium text-foreground mt-6 mb-2">D. Preference Cookies</h3>
+                        <h3 className={`${ppAgrandirHeading.className} text-xl font-medium text-foreground mt-6 mb-2`}>D. Preference Cookies</h3>
                         <p>
                             Store user settings, such as region or language.
                         </p>
@@ -57,7 +58,7 @@ export default function PreferencesPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">3. Cookie Preferences</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>3. Cookie Preferences</h2>
                         <p>You may:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Accept all cookies</li>
@@ -70,7 +71,7 @@ export default function PreferencesPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">4. Third-Party Cookies</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>4. Third-Party Cookies</h2>
                         <p>
                             Some third-party tools may set cookies (Stripe checkout, analytics providers).<br />
                             These services have their own privacy policies.
@@ -78,7 +79,7 @@ export default function PreferencesPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">5. Managing Your Preferences</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>5. Managing Your Preferences</h2>
                         <p>
                             You can manage cookie preferences through your browser settings:
                         </p>
@@ -94,7 +95,7 @@ export default function PreferencesPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">6. Contact</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>6. Contact</h2>
                         <p>
                             For questions about cookies:<br />
                             📧 <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a>

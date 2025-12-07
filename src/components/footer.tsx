@@ -29,13 +29,22 @@ export function Footer() {
                         <Link href="/careers" className="text-black/70 hover:text-black transition-colors text-base">
                             Careers
                         </Link>
+                        <Link href="/why" className="text-black/70 hover:text-black transition-colors text-base">
+                            Our Mission
+                        </Link>
                     </div>
 
                     {/* Product Links */}
                     <div className="flex flex-col gap-4">
                         <p className={`${ppAgrandirHeading.className} text-black text-lg mb-2`}>Product</p>
+                        <Link href="/product" className="text-black/70 hover:text-black transition-colors text-base">
+                            Overview
+                        </Link>
                         <Link href="/how-it-works" className="text-black/70 hover:text-black transition-colors text-base">
                             How It Works
+                        </Link>
+                        <Link href="/learn" className="text-black/70 hover:text-black transition-colors text-base">
+                            Education Hub
                         </Link>
                         <Link href="/dashboard" className="text-black/70 hover:text-black transition-colors text-base">
                             Dashboard
@@ -53,6 +62,9 @@ export function Footer() {
                     {/* Legal Links */}
                     <div className="flex flex-col gap-4">
                         <p className={`${ppAgrandirHeading.className} text-black text-lg mb-2`}>Legal</p>
+                        <Link href="/consumer-rights" className="text-black/70 hover:text-black transition-colors text-base">
+                            Consumer Rights
+                        </Link>
                         <Link href="/privacy" className="text-black/70 hover:text-black transition-colors text-base">
                             Privacy Policy
                         </Link>

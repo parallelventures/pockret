@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { ppAgrandirHeading } from "../fonts";
 
 export default function LegalPage() {
     return (
         <div className="min-h-screen flex flex-col bg-background">
             <Navbar />
             <main className="flex-1 container mx-auto px-4 py-12 max-w-3xl">
-                <h1 className="text-3xl font-bold mb-2">Legal Notice & Company Information</h1>
+                <h1 className={`${ppAgrandirHeading.className} text-3xl font-bold mb-2`}>Legal Notice & Company Information</h1>
                 <p className="text-sm text-gray-500 mb-8">Last updated: December 2025</p>
 
                 <div className="prose prose-gray max-w-none space-y-8 text-text-muted">
@@ -17,7 +18,7 @@ export default function LegalPage() {
                     </p>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-4">1. Company Information</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-4`}>1. Company Information</h2>
                         <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 space-y-2">
                             <p><strong>Legal Entity:</strong> Virtual World LLC</p>
                             <p>
@@ -35,7 +36,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">2. Service Description</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>2. Service Description</h2>
                         <p>
                             Pockret is a digital platform that helps users identify potential refunds, hidden charges, unused subscriptions, settlements, benefits, and financial opportunities.
                             The service may include:
@@ -55,7 +56,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">3. Use of the Service</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>3. Use of the Service</h2>
                         <p>By accessing Pockret, you confirm that you:</p>
                         <ul className="list-disc pl-5 space-y-1">
                             <li>Are at least 18 years old</li>
@@ -69,7 +70,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">4. Payments & Subscriptions</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>4. Payments & Subscriptions</h2>
                         <p>
                             Payments for Pockret are processed by <strong>Stripe</strong>, a PCI-compliant payment processor.
                             Accepted payment methods include credit cards, debit cards, and other Stripe-supported options.
@@ -103,7 +104,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">6. No Financial Responsibility</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>6. No Financial Responsibility</h2>
                         <p>
                             Pockret does not guarantee any specific financial outcome.
                             All decisions taken by the user based on Pockret’s information are their own responsibility.
@@ -118,7 +119,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">7. Third-Party Services</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>7. Third-Party Services</h2>
                         <p>
                             Pockret may use third-party APIs or providers (e.g., email providers, banking aggregators) to deliver some features.
                             By using these services, you agree to comply with their respective terms.
@@ -129,7 +130,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">8. Data Protection & Privacy</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>8. Data Protection & Privacy</h2>
                         <p>
                             Pockret collects and processes data in accordance with its Privacy Policy.
                             Data may include:
@@ -147,7 +148,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">9. Intellectual Property</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>9. Intellectual Property</h2>
                         <p>
                             All content, trademarks, logos, UI designs, and text on Pockret are the exclusive property of <strong>Virtual World LLC</strong>.
                             Unauthorized reproduction or distribution is prohibited.
@@ -155,7 +156,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">10. Contact Information</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>10. Contact Information</h2>
                         <p>For support, legal inquiries, or refund requests:</p>
                         <p>
                             📧 <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a><br />
@@ -164,7 +165,7 @@ export default function LegalPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-xl font-semibold text-foreground mb-2">11. Governing Law</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>11. Governing Law</h2>
                         <p>
                             These legal notices and all interactions with Pockret are governed by the laws of the State of New Mexico, United States.
                             Any dispute shall be resolved in the competent courts of New Mexico.

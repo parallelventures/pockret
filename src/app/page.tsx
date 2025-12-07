@@ -25,10 +25,10 @@ export default function Home() {
               <BlurFade delay={0.2} duration={0.8} yOffset={30}>
                 <div className="relative w-64 h-64 md:w-96 md:h-96">
                   {/* Abstract representation of the Wallet Character */}
-                  <div className="absolute inset-0 bg-[#00A97F]/10 rounded-[3rem] rotate-3 blur-3xl"></div>
+                  <div className="absolute inset-0 bg-[#0F172A]/10 rounded-[3rem] rotate-3 blur-3xl"></div>
                   <div className="absolute inset-4 bg-white border border-gray-100 rounded-[2.5rem] flex items-center justify-center">
                     <div className="text-9xl filter drop-shadow-sm">👛</div>
-                    <div className="absolute -top-4 -right-4 bg-white text-[#00A97F] font-bold px-6 py-3 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] rotate-12 border border-gray-100">
+                    <div className="absolute -top-4 -right-4 bg-white text-[#0F172A] font-bold px-6 py-3 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] rotate-12 border border-gray-100">
                       Found it!
                     </div>
                   </div>
@@ -41,39 +41,27 @@ export default function Home() {
 
               <BlurFade delay={0.1} duration={0.8}>
                 <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[0.9] tracking-tight`}>
-                  The simple, transparent way to find your money.
+                  Recover the money companies owe you, instantly
                 </h1>
               </BlurFade>
 
               <BlurFade delay={0.3} duration={0.8}>
                 <p className="text-lg text-text-muted max-w-md leading-relaxed">
-                  Pockret helps you discover and reclaim money from unclaimed settlements, refunds, and forgotten subscriptions.
+                  You connect your accounts, we uncover every dollar companies owe you.
                 </p>
               </BlurFade>
 
               <BlurFade delay={0.5} duration={0.8} className="w-full">
                 <div className="flex flex-col w-full max-w-md gap-4">
                   <Link href="/login" className="w-full">
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.96 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    >
-                      <Button size="lg" className="w-full h-14 px-8 rounded-full bg-[#00A97F] hover:bg-[#009e74] text-white font-bold text-lg transition-all active:scale-95 border-0">
-                        Find My Money
-                      </Button>
-                    </motion.div>
+                    <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-14 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-lg transition-all active:scale-95 border-0`}>
+                      Find My Money
+                    </Button>
                   </Link>
                   <Link href="/how-it-works" className="w-full">
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.96 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    >
-                      <Button variant="outline" size="lg" className="w-full h-14 px-8 rounded-full border-2 border-gray-200 bg-white text-foreground font-bold text-lg hover:bg-gray-50 transition-all">
-                        How It Works
-                      </Button>
-                    </motion.div>
+                    <Button variant="outline" size="lg" className={`${ppAgrandirHeading.className} w-full h-14 px-8 rounded-full border-2 border-gray-200 bg-white text-foreground font-bold text-lg hover:bg-gray-50 transition-all`}>
+                      How It Works
+                    </Button>
                   </Link>
                 </div>
               </BlurFade>
@@ -88,7 +76,7 @@ export default function Home() {
               <div className="w-20 h-20 bg-white border-2 border-border rounded-3xl flex items-center justify-center text-4xl shadow-sm mb-2">
                 🔍
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Smart Money Finder</h3>
+              <h3 className={`${ppAgrandirHeading.className} text-2xl font-bold text-foreground`}>Smart Money Finder</h3>
               <p className="text-text-muted leading-relaxed">
                 Search public databases and class action settlements in seconds. We find the checks you forgot to cash.
               </p>
@@ -97,7 +85,7 @@ export default function Home() {
               <div className="w-20 h-20 bg-white border-2 border-border rounded-3xl flex items-center justify-center text-4xl shadow-sm mb-2">
                 📊
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Subscription Analyzer</h3>
+              <h3 className={`${ppAgrandirHeading.className} text-2xl font-bold text-foreground`}>Subscription Analyzer</h3>
               <p className="text-text-muted leading-relaxed">
                 For EU users, we detect unfair recurring charges and help you cancel them with one click.
               </p>
@@ -106,7 +94,7 @@ export default function Home() {
               <div className="w-20 h-20 bg-white border-2 border-border rounded-3xl flex items-center justify-center text-4xl shadow-sm mb-2">
                 ⚡
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Auto-Claim Generator</h3>
+              <h3 className={`${ppAgrandirHeading.className} text-2xl font-bold text-foreground`}>Auto-Claim Generator</h3>
               <p className="text-text-muted leading-relaxed">
                 No lawyers needed. Generate professional refund emails and claim forms instantly.
               </p>
@@ -122,7 +110,7 @@ export default function Home() {
               <TotalRecoveredCard />
             </div>
             <div className="order-1 md:order-2 space-y-6">
-              <h2 className="text-4xl font-bold text-foreground">Watch your balance grow.</h2>
+              <h2 className={`${ppAgrandirHeading.className} text-4xl font-bold text-foreground`}>Watch your balance grow.</h2>
               <p className="text-lg text-text-muted">
                 Track every dollar found. Earn badges for reclaiming settlements and canceling zombie subscriptions.
               </p>
@@ -132,7 +120,7 @@ export default function Home() {
           {/* Block 2 */}
           <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-foreground">Country-based experience.</h2>
+              <h2 className={`${ppAgrandirHeading.className} text-4xl font-bold text-foreground`}>Country-based experience.</h2>
               <p className="text-lg text-text-muted">
                 Pockret adapts to your laws. Finding class actions in the US? We got it. Fighting unfair fees in the EU? Done.
               </p>

@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { ppAgrandirHeading } from "../fonts";
 
 export default function DisclaimerPage() {
     return (
         <div className="min-h-screen flex flex-col bg-background">
             <Navbar />
             <main className="flex-1 container mx-auto px-4 py-12 max-w-4xl">
-                <h1 className="text-4xl font-bold mb-2">Disclaimer – Pockret</h1>
+                <h1 className={`${ppAgrandirHeading.className} text-4xl font-bold mb-2`}>Disclaimer – Pockret</h1>
                 <p className="text-sm text-gray-500 mb-8">Last updated: December 2025</p>
 
                 <div className="prose prose-gray max-w-none space-y-6 text-text-muted">
@@ -15,7 +16,7 @@ export default function DisclaimerPage() {
                     </p>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">What Pockret Is Not</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>What Pockret Is Not</h2>
                         <p>Pockret:</p>
                         <ul className="list-disc pl-6 space-y-2">
                             <li>Is <strong>not</strong> a financial advisor</li>
@@ -25,7 +26,7 @@ export default function DisclaimerPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">Results May Vary</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>Results May Vary</h2>
                         <p>
                             All refund results vary depending on individual cases and third-party company policies.
                         </p>
@@ -41,7 +42,7 @@ export default function DisclaimerPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">Limitation of Responsibility</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>Limitation of Responsibility</h2>
                         <p>Virtual World LLC is <strong>not responsible</strong> for:</p>
                         <ul className="list-disc pl-6 space-y-1">
                             <li>Denied refund requests</li>
@@ -53,7 +54,7 @@ export default function DisclaimerPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">User Acknowledgment</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>User Acknowledgment</h2>
                         <p className="font-medium">
                             By using Pockret, you acknowledge these limitations and understand that:
                         </p>
@@ -66,7 +67,7 @@ export default function DisclaimerPage() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-foreground mb-3 mt-8">Contact</h2>
+                        <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>Contact</h2>
                         <p>
                             For questions about this disclaimer:<br />
                             📧 <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a><br />
