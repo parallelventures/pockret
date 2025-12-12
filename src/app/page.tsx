@@ -114,7 +114,7 @@ export default function Home() {
 
               <BlurFade delay={0.1} duration={0.8}>
                 <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[0.9] tracking-tight`}>
-                  Recover the money companies owe you, instantly
+                  Recover the money companies owe you, instantly.
                 </h1>
               </BlurFade>
 
@@ -127,7 +127,7 @@ export default function Home() {
               <BlurFade delay={0.5} duration={0.8} className="w-full">
                 <div className="flex flex-col w-full max-w-md gap-4 items-center">
                   <Link href="/login" className="w-full">
-                    <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-14 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-lg transition-all active:scale-95 border-0`}>
+                    <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
                       Find My Money
                     </Button>
                   </Link>

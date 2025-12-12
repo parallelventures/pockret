@@ -123,7 +123,7 @@ export function Footer() {
                         <p className="text-black/40 text-sm flex items-center gap-1.5">
                             Bank connections are securely powered by
                             <a href="https://plaid.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center translate-y-[2px] hover:opacity-70 transition-opacity">
-                                <Image src="/Plaid.svg" alt="Plaid" width={90} height={40} className="h-10 w-auto" />
+                                <Image src="/Plaid.svg" alt="Plaid" width={110} height={48} className="h-12 w-auto" />
                             </a>
                         </p>
                     </div>
