@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { sfProDisplay, ppAgrandirHeading } from '@/app/fonts'
 
 const FooterGradient = dynamic(() => import('./footer-gradient'), { ssr: false })
@@ -40,6 +41,9 @@ export function Footer() {
                         <Link href="/dashboard" className="text-black/60 hover:text-black transition-colors text-sm">
                             Dashboard
                         </Link>
+                        <Link href="/earn" className="text-black/60 hover:text-black transition-colors text-sm font-medium">
+                            Earn Extra Money
+                        </Link>
                         <Link href="/refund" className="text-black/60 hover:text-black transition-colors text-sm">
                             Refund Policy
                         </Link>
@@ -59,6 +63,15 @@ export function Footer() {
                         </Link>
                         <Link href="/learn/subscription-trap" className="text-black/60 hover:text-black transition-colors text-sm">
                             Subscription Trap
+                        </Link>
+                        <Link href="/learn/is-it-safe" className="text-black/60 hover:text-black transition-colors text-sm">
+                            Is It Safe?
+                        </Link>
+                        <Link href="/learn/diy-vs-pockret" className="text-black/60 hover:text-black transition-colors text-sm">
+                            DIY vs Automation
+                        </Link>
+                        <Link href="/learn/what-if-no-results" className="text-black/60 hover:text-black transition-colors text-sm">
+                            No Results?
                         </Link>
                         <Link href="/consumer-rights" className="text-black/60 hover:text-black transition-colors text-sm">
                             Consumer Rights
@@ -94,14 +107,26 @@ export function Footer() {
                         <Link href="/careers" className="text-black/60 hover:text-black transition-colors text-sm">
                             Careers
                         </Link>
+                        <Link href="/security" className="text-black/60 hover:text-black transition-colors text-sm">
+                            Security
+                        </Link>
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
                 <div className="mt-10 pt-6 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-black/40 text-sm">
-                        © {new Date().getFullYear()} Pockret. All rights reserved.
-                    </p>
+                    <div className="flex flex-col md:flex-row items-center gap-4">
+                        <p className="text-black/40 text-sm">
+                            © {new Date().getFullYear()} Pockret. All rights reserved.
+                        </p>
+                        <span className="hidden md:inline text-black/10">|</span>
+                        <p className="text-black/40 text-sm flex items-center gap-1.5">
+                            Bank connections are securely powered by
+                            <a href="https://plaid.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center translate-y-[2px] hover:opacity-70 transition-opacity">
+                                <Image src="/Plaid.svg" alt="Plaid" width={90} height={40} className="h-10 w-auto" />
+                            </a>
+                        </p>
+                    </div>
                     <p className="text-black/40 text-sm">
                         A product of Virtual World LLC.
                     </p>

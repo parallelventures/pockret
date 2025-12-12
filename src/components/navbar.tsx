@@ -43,7 +43,7 @@ export function Navbar() {
 
     return (
         <header
-            className={`sticky top-0 z-50 w-full bg-[#F9FAFB] transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+            className={`sticky top-0 z-50 w-full bg-[#F9FAFB]/70 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
             style={{
                 backdropFilter: 'blur(24px) saturate(180%)',
                 WebkitBackdropFilter: 'blur(24px) saturate(180%)',
@@ -55,11 +55,7 @@ export function Navbar() {
                 </Link>
 
                 <div className="flex items-center gap-4 ml-auto">
-                    <div className="hidden md:flex items-center gap-2 text-sm font-bold text-text-muted uppercase tracking-wide cursor-pointer hover:text-foreground transition-colors">
-                        <span>US</span>
-                        <span className="text-border">/</span>
-                        <span>EU</span>
-                    </div>
+
 
                     {!loading && (
                         <>

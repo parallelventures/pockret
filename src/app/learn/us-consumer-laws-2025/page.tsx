@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { ppAgrandirHeading, sfProDisplay } from "../../fonts";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { Clock } from "lucide-react";
 
 const ArticleCTAGradient = dynamic(() => import("@/components/article-cta-gradient"), { ssr: false });
 
@@ -24,6 +25,10 @@ export default function ConsumerLawsArticle() {
 
                     {/* Header */}
                     <header className="mb-12">
+                        <div className="flex items-center gap-2 text-blue-600 font-bold text-sm uppercase tracking-wider mb-4">
+                            <Clock className="w-4 h-4" />
+                            <span>7 min read</span>
+                        </div>
                         <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl font-bold text-black leading-tight mb-6`}>
                             How to Use U.S. Consumer Laws to Get Your Money Back in 2025
                         </h1>

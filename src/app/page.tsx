@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -10,9 +10,11 @@ import { ppAgrandirHeading } from "./fonts";
 import { TotalRecoveredCard } from "@/components/total-recovered-card";
 import { BlurFade, StaggerContainer, fadeInUpVariant } from "@/components/ui/animations";
 import { motion } from "framer-motion";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -53,11 +55,22 @@ export default function Home() {
       video.play();
     };
 
+    // Check if video is already ready
+    if (video.readyState >= 3) {
+      setIsVideoLoaded(true);
+    }
+
+    const handleLoadedData = () => {
+      setIsVideoLoaded(true);
+    };
+
+    video.addEventListener('loadeddata', handleLoadedData);
     video.addEventListener('timeupdate', handleTimeUpdate);
     video.addEventListener('ended', handleEnded);
 
     return () => {
       video.removeEventListener('canplay', playVideo);
+      video.removeEventListener('loadeddata', handleLoadedData);
       video.removeEventListener('timeupdate', handleTimeUpdate);
       video.removeEventListener('ended', handleEnded);
     };
@@ -74,7 +87,10 @@ export default function Home() {
 
             {/* Left: Visual (Mobile: Order 1, Desktop: Order 1) */}
             <div className="relative z-10 flex justify-center md:justify-end">
-              <div className="relative w-full max-w-2xl">
+              <div className="relative w-full max-w-2xl rounded-3xl overflow-hidden aspect-[1920/1536] bg-gray-100">
+                {!isVideoLoaded && (
+                  <Skeleton className="absolute inset-0 w-full h-full z-20 rounded-3xl" />
+                )}
                 <video
                   ref={videoRef}
                   autoPlay
@@ -82,7 +98,8 @@ export default function Home() {
                   muted
                   playsInline
                   preload="auto"
-                  className="w-full h-auto rounded-3xl"
+                  className={`w-full h-full object-cover rounded-3xl transition-opacity duration-700 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  onLoadedData={() => setIsVideoLoaded(true)}
                   // @ts-ignore - Safari specific attributes
                   webkit-playsinline="true"
                   x5-playsinline="true"

@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { ppAgrandirHeading, sfProDisplay } from "../../fonts";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { ArrowRight, Clock } from "lucide-react";
 
 const ArticleCTAGradient = dynamic(() => import("@/components/article-cta-gradient"), { ssr: false });
 
@@ -24,6 +25,10 @@ export default function SubscriptionTrapArticle() {
 
                     {/* Header */}
                     <header className="mb-12">
+                        <div className="flex items-center gap-2 text-sm text-black/40 font-medium mb-4">
+                            <Clock className="w-4 h-4" />
+                            <span>6 min read</span>
+                        </div>
                         <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl font-bold text-black leading-tight mb-6`}>
                             The Subscription Trap: How Recurring Payments Quietly Steal Your Future
                         </h1>
@@ -334,7 +339,7 @@ export default function SubscriptionTrapArticle() {
                             If you feel like your money disappears without you understanding where it goes, it's not a personal failure. <strong>It's a design.</strong>
                         </p>
 
-                        <blockquote className="border-l-4 border-blue-400 pl-6 py-4 mb-12 bg-blue-50 rounded-r-lg">
+                        <blockquote className="border-l-4 border-slate-400 pl-6 py-4 mb-12 bg-slate-50 rounded-r-lg">
                             <p className="text-black/80 text-lg font-medium">
                                 Pockret is built to be the <strong>counter-design</strong>: A simple, almost brutally honest tool whose only goal is to find leaks, kill useless subscriptions, and help you claw back as much money as possible, as easily as possible.<br /><br />
                                 One dashboard. One click. And suddenly, your financial life starts to feel like <em>yours</em> again.
@@ -361,6 +366,15 @@ export default function SubscriptionTrapArticle() {
                     </div>
                 </article>
             </main>
+
+            {/* Sticky CTA (Mobile) */}
+            <div className="fixed bottom-6 left-0 right-0 z-50 px-6 flex justify-center pointer-events-none md:hidden">
+                <Link href="/login" className="pointer-events-auto w-full max-w-sm shadow-2xl shadow-black/20 rounded-full">
+                    <button className={`${ppAgrandirHeading.className} w-full bg-black text-white px-6 py-4 rounded-full font-bold text-lg hover:bg-black/90 transition-all active:scale-95 flex items-center justify-center gap-2 border border-white/20`}>
+                        Find Hidden Subscriptions <ArrowRight className="w-5 h-5" />
+                    </button>
+                </Link>
+            </div>
 
             <Footer />
         </div>
