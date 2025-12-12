@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 
-import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts";
+import { ppAgrandirHeading } from "@/app/fonts";
 
 export function Navbar() {
     const { user, loading } = useUser()
@@ -48,33 +48,31 @@ export function Navbar() {
                     <span className={`${ppAgrandirHeading.className} text-2xl font-extrabold text-black tracking-tight`}>Pockret</span>
                 </Link>
 
-                <div className="flex items-center gap-6 ml-auto">
-                    <div className={`${sfProDisplay.className} hidden md:flex items-center gap-1.5 text-sm font-medium text-black/50 cursor-pointer hover:text-black/80 transition-opacity duration-200`}>
+                <div className="flex items-center gap-4 ml-auto">
+                    <div className="hidden md:flex items-center gap-2 text-sm font-bold text-text-muted uppercase tracking-wide cursor-pointer hover:text-foreground transition-colors">
                         <span>US</span>
-                        <span className="text-black/20">/</span>
+                        <span className="text-border">/</span>
                         <span>EU</span>
                     </div>
 
                     {!loading && (
                         <>
                             {user ? (
-                                <div className="flex items-center gap-1">
+                                <div className="flex items-center gap-4">
                                     <Link href="/dashboard">
-                                        <button className={`${sfProDisplay.className} px-4 py-2 text-sm font-medium text-black/60 hover:text-black transition-colors duration-200`}>
-                                            Dashboard
-                                        </button>
+                                        <Button variant="ghost" className="font-bold text-text-muted hover:bg-accent/50 uppercase tracking-wide">Dashboard</Button>
                                     </Link>
                                     <Link href="/profile">
-                                        <button className={`${sfProDisplay.className} px-4 py-2 text-sm font-medium text-black/60 hover:text-black transition-colors duration-200`}>
+                                        <Button variant="ghost" className="font-bold text-text-muted hover:bg-accent/50 uppercase tracking-wide">
                                             Profile
-                                        </button>
+                                        </Button>
                                     </Link>
                                 </div>
                             ) : (
                                 <Link href="/login">
-                                    <button className={`${sfProDisplay.className} px-4 py-2 text-sm font-medium text-black/60 hover:text-black transition-colors duration-200`}>
-                                        Sign In
-                                    </button>
+                                    <Button variant="ghost" className="font-bold text-text-muted hover:bg-accent/50 uppercase tracking-wide">
+                                        I ALREADY HAVE AN ACCOUNT
+                                    </Button>
                                 </Link>
                             )}
                         </>

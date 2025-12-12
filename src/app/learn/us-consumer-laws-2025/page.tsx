@@ -4,7 +4,9 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { ppAgrandirHeading, sfProDisplay } from "../../fonts";
 import Link from "next/link";
-import ArticleCTAGradient from "@/components/article-cta-gradient";
+import dynamic from "next/dynamic";
+
+const ArticleCTAGradient = dynamic(() => import("@/components/article-cta-gradient"), { ssr: false });
 
 export default function ConsumerLawsArticle() {
     return (

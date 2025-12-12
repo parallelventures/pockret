@@ -1,8 +1,10 @@
 'use client'
 
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { sfProDisplay, ppAgrandirHeading } from '@/app/fonts'
-import FooterGradient from './footer-gradient'
+
+const FooterGradient = dynamic(() => import('./footer-gradient'), { ssr: false })
 
 export function Footer() {
     return (
