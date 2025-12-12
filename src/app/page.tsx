@@ -72,8 +72,8 @@ export default function Home() {
         <section className="relative pt-20 pb-32 md:pt-32 md:pb-48 px-6 overflow-hidden">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
 
-            {/* Left: Visual (Mobile: Order 2, Desktop: Order 1) */}
-            <div className="order-2 md:order-1 relative z-10 flex justify-center md:justify-end">
+            {/* Left: Visual (Mobile: Order 1, Desktop: Order 1) */}
+            <div className="relative z-10 flex justify-center md:justify-end">
               <div className="relative w-full max-w-2xl">
                 <video
                   ref={videoRef}
@@ -92,8 +92,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Content (Mobile: Order 1, Desktop: Order 2) */}
-            <div className="order-1 md:order-2 flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+            {/* Right: Content (Mobile: Order 2, Desktop: Order 2) */}
+            <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-8">
 
               <BlurFade delay={0.1} duration={0.8}>
                 <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[0.9] tracking-tight`}>
