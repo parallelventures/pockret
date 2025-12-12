@@ -42,7 +42,13 @@ export function Navbar() {
     }
 
     return (
-        <header className={`sticky top-0 z-50 w-full bg-white/40 backdrop-blur-xl backdrop-saturate-150 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+        <header
+            className={`sticky top-0 z-50 w-full bg-white/70 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+            style={{
+                backdropFilter: 'blur(24px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            }}
+        >
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
                     <span className={`${ppAgrandirHeading.className} text-2xl font-extrabold text-black tracking-tight`}>Pockret</span>
