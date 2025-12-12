@@ -16,9 +16,6 @@ export default function DisclaimerTransparencyPage() {
             <main className="flex-1 w-full">
                 {/* Hero Section */}
                 <section className="pt-24 pb-12 px-6 text-center max-w-4xl mx-auto">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-black/5 mb-6">
-                        <Shield className="w-8 h-8 text-black/60" />
-                    </div>
                     <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl font-extrabold text-black leading-[0.95] tracking-tight mb-6`}>
                         Disclaimer & Transparency
                     </h1>

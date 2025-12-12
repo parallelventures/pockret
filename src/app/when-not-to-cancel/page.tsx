@@ -4,7 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import Link from "next/link";
 import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts";
-import { Lightbulb, CheckCircle2, XCircle, ArrowRight, Pause, TrendingDown, Heart, Brain, Dumbbell, Music, Film, Cloud, Wrench } from "lucide-react";
+import { CheckCircle2, XCircle, ArrowRight, Pause, TrendingDown, Heart, Brain, Dumbbell, Music, Film, Cloud, Wrench } from "lucide-react";
 
 export default function WhenNotToCancelPage() {
     const lastUpdated = "December 13, 2025";
@@ -16,9 +16,6 @@ export default function WhenNotToCancelPage() {
             <main className="flex-1 w-full">
                 {/* Hero Section */}
                 <section className="pt-24 pb-12 px-6 text-center max-w-4xl mx-auto">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-50 mb-6">
-                        <Lightbulb className="w-8 h-8 text-amber-500" />
-                    </div>
                     <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl font-extrabold text-black leading-[0.95] tracking-tight mb-6`}>
                         When Not to Cancel a Subscription
                     </h1>
