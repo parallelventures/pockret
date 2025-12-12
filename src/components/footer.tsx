@@ -79,6 +79,9 @@ export function Footer() {
                         <Link href="/when-not-to-cancel" className="text-black/60 hover:text-black transition-colors text-sm">
                             When Not to Cancel
                         </Link>
+                        <Link href="/guides/netflix" className="text-black/60 hover:text-black transition-colors text-sm">
+                            Cancel Netflix
+                        </Link>
                     </div>
 
                     {/* Legal */}
