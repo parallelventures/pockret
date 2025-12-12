@@ -2,11 +2,16 @@
 
 import Link from 'next/link'
 import { sfProDisplay, ppAgrandirHeading } from '@/app/fonts'
+import FooterGradient from './footer-gradient'
 
 export function Footer() {
     return (
         <footer className={`${sfProDisplay.className} relative w-full bg-background py-20 mt-auto overflow-hidden min-h-[400px] flex items-center`}>
 
+            {/* Background Gradient */}
+            <div className="absolute inset-0 pointer-events-none">
+                <FooterGradient />
+            </div>
             {/* Footer Content */}
             <div className="relative z-10 container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-base">
