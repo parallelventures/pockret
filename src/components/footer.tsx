@@ -76,6 +76,9 @@ export function Footer() {
                         <Link href="/consumer-rights" className="text-black/60 hover:text-black transition-colors text-sm">
                             Consumer Rights
                         </Link>
+                        <Link href="/when-not-to-cancel" className="text-black/60 hover:text-black transition-colors text-sm">
+                            When Not to Cancel
+                        </Link>
                     </div>
 
                     {/* Legal */}
@@ -89,6 +92,9 @@ export function Footer() {
                         </Link>
                         <Link href="/disclaimer" className="text-black/60 hover:text-black transition-colors text-sm">
                             Disclaimer
+                        </Link>
+                        <Link href="/disclaimer-transparency" className="text-black/60 hover:text-black transition-colors text-sm">
+                            Transparency
                         </Link>
                         <Link href="/legal" className="text-black/60 hover:text-black transition-colors text-sm">
                             Legal Notice
