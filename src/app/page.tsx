@@ -140,191 +140,133 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Value Proposition Grid */}
-        <section id="how-it-works" className="max-w-5xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="flex flex-col items-center text-center space-y-4">
-              <div className="w-20 h-20 bg-white border-2 border-border rounded-3xl flex items-center justify-center text-4xl shadow-sm mb-2">
-                🔍
-              </div>
-              <h3 className={`${ppAgrandirHeading.className} text-2xl font-bold text-foreground`}>Smart Money Finder</h3>
-              <p className="text-text-muted leading-relaxed">
-                Search public databases and class action settlements in seconds. We find the checks you forgot to cash.
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-4">
-              <div className="w-20 h-20 bg-white border-2 border-border rounded-3xl flex items-center justify-center text-4xl shadow-sm mb-2">
-                📊
-              </div>
-              <h3 className={`${ppAgrandirHeading.className} text-2xl font-bold text-foreground`}>Subscription Analyzer</h3>
-              <p className="text-text-muted leading-relaxed">
-                For EU users, we detect unfair recurring charges and help you cancel them with one click.
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-4">
-              <div className="w-20 h-20 bg-white border-2 border-border rounded-3xl flex items-center justify-center text-4xl shadow-sm mb-2">
-                ⚡
-              </div>
-              <h3 className={`${ppAgrandirHeading.className} text-2xl font-bold text-foreground`}>Auto-Claim Generator</h3>
-              <p className="text-text-muted leading-relaxed">
-                No lawyers needed. Generate professional refund emails and claim forms instantly.
-              </p>
+        {/* What we find */}
+        <section className="py-20 px-6">
+          <div className="max-w-4xl mx-auto border-t border-black/10 pt-20">
+            <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
+              Money you didn't know you were losing.
+            </h2>
+            <p className="text-black/60 mb-12 max-w-2xl">
+              Most people are owed hundreds of dollars and have no idea. We find it for you.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                { title: "Forgotten subscriptions", desc: "Services you signed up for but no longer use." },
+                { title: "Duplicate charges", desc: "The same charge appearing twice on your statement." },
+                { title: "Class action settlements", desc: "Lawsuits you're eligible for but didn't know about." },
+                { title: "Hidden fees", desc: "Charges that were never properly disclosed to you." },
+                { title: "Overcharges", desc: "When you paid more than you should have." },
+                { title: "Bank errors", desc: "Processing mistakes and unauthorized fees." },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl p-6 border border-black/5"
+                >
+                  <h3 className={`${ppAgrandirHeading.className} text-base font-bold text-black mb-2`}>
+                    {item.title}
+                  </h3>
+                  <p className="text-black/50 text-sm">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Gamified Progress Section */}
-        <section className="w-full py-20 space-y-24">
-          {/* Block 1 */}
-          <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 relative">
-              <TotalRecoveredCard />
-            </div>
-            <div className="order-1 md:order-2 space-y-6">
-              <h2 className={`${ppAgrandirHeading.className} text-4xl font-bold text-foreground`}>Watch your balance grow.</h2>
-              <p className="text-lg text-text-muted">
-                Track every dollar found. Earn badges for reclaiming settlements and canceling zombie subscriptions.
-              </p>
-            </div>
-          </div>
+        {/* How it works */}
+        <section className="py-20 px-6 bg-white border-y border-black/10">
+          <div className="max-w-4xl mx-auto">
+            <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-12`}>
+              Three steps. Zero effort.
+            </h2>
 
-          {/* Block 2 */}
-          <div className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className={`${ppAgrandirHeading.className} text-4xl font-bold text-foreground`}>Country-based experience.</h2>
-              <p className="text-lg text-text-muted">
-                Pockret adapts to your laws. Finding class actions in the US? We got it. Fighting unfair fees in the EU? Done.
-              </p>
-            </div>
-            <div className="relative">
-              <div className="bg-white border-2 border-border rounded-3xl p-8 shadow-lg transform rotate-2">
-                <div className="flex gap-4">
-                  <div className="flex-1 bg-blue-50 rounded-xl p-4 border border-blue-100 text-center">
-                    <div className="text-4xl mb-2">🇺🇸</div>
-                    <div className="font-bold text-secondary">Settlements</div>
-                  </div>
-                  <div className="flex-1 bg-yellow-50 rounded-xl p-4 border border-yellow-100 text-center">
-                    <div className="text-4xl mb-2">🇪🇺</div>
-                    <div className="font-bold text-yellow-600">Consumer Rights</div>
+            <div className="space-y-12">
+              {[
+                { num: "01", title: "Connect your accounts", desc: "Securely link your bank through Plaid. Read-only access—we can never move your money." },
+                { num: "02", title: "We scan everything", desc: "Our AI analyzes your transactions to find refunds, forgotten charges, and settlements." },
+                { num: "03", title: "Recover in one click", desc: "For each opportunity, tap to recover. We handle the dispute for you." },
+              ].map((step, index) => (
+                <div key={index} className="flex gap-8 items-start">
+                  <span className={`${ppAgrandirHeading.className} text-5xl md:text-6xl font-bold text-black/10 flex-shrink-0`}>
+                    {step.num}
+                  </span>
+                  <div className="pt-2">
+                    <h3 className={`${ppAgrandirHeading.className} text-xl font-bold text-black mb-2`}>
+                      {step.title}
+                    </h3>
+                    <p className="text-black/60 leading-relaxed">
+                      {step.desc}
+                    </p>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Pricing Teaser Section - Conversion Optimized */}
-        {/* HIDDEN: Part of strategy to make users believe it's free without explicitly stating it
-        <section className="w-full py-20 px-6 bg-white">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <BlurFade delay={0.1} duration={0.8}>
-              <h2 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl font-extrabold text-foreground leading-tight`}>
-                Stop Overpaying.<br />Start Recovering.
+        {/* Security */}
+        <section className="py-20 px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-black rounded-3xl p-8 md:p-12">
+              <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-white mb-8`}>
+                Bank-level security. Zero risk.
               </h2>
-            </BlurFade>
-
-            <BlurFade delay={0.2} duration={0.8}>
-              <p className="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto">
-                Unlock up to <strong className="text-[#00A97F]">$1,200/year</strong> you didn't know you were owed — automatically.
-              </p>
-            </BlurFade>
-
-            <BlurFade delay={0.3} duration={0.8}>
-              <div className="bg-gradient-to-br from-[#F9FAFB] to-white border-2 border-[#00A97F]/20 rounded-3xl p-8 md:p-12 max-w-2xl mx-auto shadow-xl">
-                <div className="space-y-6">
-                  <div className="space-y-3">
-                    <div className="inline-block bg-[#00A97F] text-white px-4 py-1 rounded-full text-sm font-bold mb-2">
-                      🔥 80% OFF — Limited Time
-                    </div>
-                    <div className="flex items-center justify-center gap-4">
-                      <span className="text-3xl md:text-4xl text-text-muted line-through">$199.99</span>
-                      <span className={`${ppAgrandirHeading.className} text-5xl md:text-6xl font-bold text-[#00A97F]`}>$39.99</span>
-                    </div>
-                    <p className="text-lg text-foreground font-semibold">
-                      One-time purchase. No subscriptions. Ever.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col gap-3 text-left max-w-md mx-auto">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
-                      <span className="text-base text-foreground">
-                        <strong>Find hidden fees & forgotten subscriptions</strong> your bank won't show you
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
-                      <span className="text-base text-foreground">
-                        <strong>Auto-fill refund requests</strong> in one click — no forms, no calls
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
-                      <span className="text-base text-foreground">
-                        <strong>Instant scan</strong> — start recovering money in 60 seconds
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
-                      <span className="text-base text-foreground">
-                        <strong>14-day money-back guarantee</strong> — Zero risk
-                      </span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-6 h-6 text-[#00A97F] flex-shrink-0 mt-0.5" />
-                      <span className="text-base text-foreground">
-                        <strong>Lifetime access</strong> — Unlock money forever
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-border">
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-yellow-400 text-xl">★</span>
-                        ))}
-                      </div>
-                      <span className="text-sm font-semibold text-foreground">4.8/5</span>
-                    </div>
-                    <p className="text-sm text-text-muted">
-                      <strong className="text-foreground">10,000+ users</strong> recovered over <strong className="text-[#00A97F]">$3M</strong> with Pockret
-                    </p>
-                  </div>
-
-                  <Link href="/pricing" className="block w-full">
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.96 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                    >
-                      <Button size="lg" className="w-full h-16 px-8 rounded-full bg-[#00A97F] hover:bg-[#009e74] text-white font-bold text-xl transition-all shadow-lg">
-                        Start My Scan Now
-                        <ArrowRight className="ml-2 w-6 h-6" />
-                      </Button>
-                    </motion.div>
-                  </Link>
-
-                  <div className="flex items-center justify-center gap-6 text-xs text-text-muted pt-2">
-                    <div className="flex items-center gap-1">
-                      <ShieldCheck className="w-4 h-4" />
-                      <span>SSL Secure</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      <span>Instant Access</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <DollarSign className="w-4 h-4" />
-                      <span>Money-Back</span>
-                    </div>
-                  </div>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-white font-medium mb-2">Read-only access</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    We can only see your transactions. We can never move money or make changes.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-white font-medium mb-2">Powered by Plaid</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    Trusted by Venmo, Chime, and 12,000+ banks. We never see your password.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-white font-medium mb-2">256-bit encryption</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    Your data is encrypted end-to-end with bank-grade security.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-white font-medium mb-2">We never sell your data</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    Your transaction history is never sold to advertisers or third parties.
+                  </p>
                 </div>
               </div>
-            </BlurFade>
+              <div className="mt-8 pt-8 border-t border-white/10">
+                <Link href="/security" className="text-white/60 hover:text-white text-sm transition-colors">
+                  Learn more about security →
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
-        */}
+
+        {/* CTA */}
+        <section className="py-20 px-6">
+          <div className="max-w-2xl mx-auto text-center border-t border-black/10 pt-20">
+            <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
+              Ready to find your money?
+            </h2>
+            <p className="text-black/60 mb-8">
+              Free to scan. Takes 30 seconds.
+            </p>
+            <Link href="/login">
+              <Button size="lg" className={`${ppAgrandirHeading.className} h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
+                Find My Money
+              </Button>
+            </Link>
+            <p className="text-black/40 text-sm mt-4">
+              No credit card required
+            </p>
+          </div>
+        </section>
       </main>
 
       <Footer />

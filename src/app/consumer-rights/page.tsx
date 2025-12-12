@@ -101,8 +101,8 @@ export default function ConsumerRightsPage() {
                 </section>
 
                 {/* How Pockret Helps */}
-                <section className="py-16 px-6 border-t border-black/10">
-                    <div className="max-w-3xl mx-auto text-center">
+                <section className="py-16 px-6">
+                    <div className="max-w-3xl mx-auto text-center border-t border-black/10 pt-16">
                         <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
                             Pockret turns these rights into action.
                         </h2>

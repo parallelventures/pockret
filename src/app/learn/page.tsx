@@ -17,6 +17,7 @@ const MAIN_GUIDES = [
         icon: AlertCircle,
         color: "text-rose-600",
         bg: "bg-rose-50",
+        image: "/painting.png",
         content: "recurring payments, gym membership, free trial, forgotten subscriptions, dark patterns, cancellation, difficulty, money leaks, streaming services, monthly bills, automated detection, stop paying, unused apps, zombie subscriptions, financial drain."
     },
     {
@@ -27,6 +28,7 @@ const MAIN_GUIDES = [
         icon: MousePointerClick,
         color: "text-emerald-600",
         bg: "bg-emerald-50",
+        image: "/seascape1.png",
         content: "class action settlements, unclaimed money, refunds, hidden cash, junk fees, deceptive pricing, privacy violations, scan transactions, claim form, verify, negotiate, cancel subscriptions, overcharges, micro-fees, dashboard, automated refund requests, money left on the table."
     },
     {
@@ -37,6 +39,7 @@ const MAIN_GUIDES = [
         icon: BookOpen,
         color: "text-blue-600",
         bg: "bg-blue-50",
+        image: "/seascape2.png",
         content: "FCBA, Fair Credit Billing Act, EFTA, Electronic Fund Transfer Act, Regulation E, TILA, Truth in Lending Act, fraud, unauthorized charges, billing error, liability tiers, dispute letter, CFPB, FTC, consumer rights, federal law, bank charges, credit card disputes."
     }
 ];
@@ -94,9 +97,15 @@ export default function LearnPage() {
                 <section className="pt-24 pb-12 px-6">
                     <div className="max-w-4xl mx-auto text-center">
                         <div>
+                            <h1 className={`${ppAgrandirHeading.className} text-5xl md:text-7xl font-extrabold text-foreground mb-6 tracking-tight`}>
+                                Education Hub
+                            </h1>
+                            <p className="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto leading-relaxed mb-10">
+                                Master your money rights. No jargon, just clear guides on how to stop leaks and get paid.
+                            </p>
 
                             {/* Search Bar */}
-                            <div className="max-w-3xl mx-auto relative group mb-12">
+                            <div className="max-w-3xl mx-auto relative group">
                                 <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
                                     <Search className="w-5 h-5 text-gray-400 group-focus-within:text-black transition-colors" />
                                 </div>
@@ -108,14 +117,6 @@ export default function LearnPage() {
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                 />
                             </div>
-
-                            <h1 className={`${ppAgrandirHeading.className} text-5xl md:text-7xl font-extrabold text-foreground mb-6 tracking-tight`}>
-                                Education Hub
-                            </h1>
-                            <p className="text-xl md:text-2xl text-text-muted max-w-2xl mx-auto leading-relaxed mb-10">
-                                Master your money rights. No jargon, just clear guides on how to stop leaks and get paid.
-                            </p>
-
                         </div>
                     </div>
                 </section>
@@ -176,28 +177,28 @@ export default function LearnPage() {
                     <>
                         {/* Main Guides Grid */}
                         <section className="px-6 mb-24">
-                            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {MAIN_GUIDES.map((guide, i) => (
                                     <Link href={guide.href} key={i} className="group">
-                                        <article
-                                            className="h-full bg-white border border-border rounded-3xl p-8 hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 flex flex-col"
-                                        >
-                                            <div className={`w-12 h-12 ${guide.bg} ${guide.color} rounded-2xl flex items-center justify-center mb-6`}>
-                                                <guide.icon className="w-6 h-6" />
-                                            </div>
-                                            <div className="mb-4">
-                                                <span className="text-xs font-bold uppercase tracking-wider text-text-muted opacity-60">
+                                        <article className="relative aspect-square rounded-2xl overflow-hidden">
+                                            {/* Background Image */}
+                                            <div
+                                                className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                                                style={{ backgroundImage: `url(${guide.image})` }}
+                                            />
+                                            {/* Gradient Overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                            {/* Content */}
+                                            <div className="relative h-full flex flex-col justify-end p-6">
+                                                <span className="text-xs font-bold uppercase tracking-wider text-white/60 mb-2">
                                                     {guide.category}
                                                 </span>
-                                            </div>
-                                            <h2 className={`${ppAgrandirHeading.className} text-2xl font-bold text-foreground mb-3`}>
-                                                {guide.title}
-                                            </h2>
-                                            <p className="text-text-muted mb-8 leading-relaxed flex-grow">
-                                                {guide.description}
-                                            </p>
-                                            <div className="flex items-center text-foreground font-semibold group-hover:text-black transition-colors">
-                                                Read Guide <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                                                <h2 className={`${ppAgrandirHeading.className} text-2xl font-bold text-white mb-2`}>
+                                                    {guide.title}
+                                                </h2>
+                                                <p className="text-white/70 text-sm leading-relaxed line-clamp-2">
+                                                    {guide.description}
+                                                </p>
                                             </div>
                                         </article>
                                     </Link>

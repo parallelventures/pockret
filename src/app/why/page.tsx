@@ -80,8 +80,8 @@ export default function WhyPage() {
                 </section>
 
                 {/* CTA */}
-                <section className="py-16 px-6 border-t border-black/10">
-                    <div className="max-w-2xl mx-auto text-center">
+                <section className="py-16 px-6">
+                    <div className="max-w-2xl mx-auto text-center border-t border-black/10 pt-16">
                         <h3 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-6`}>
                             Ready to see what you're owed?
                         </h3>
