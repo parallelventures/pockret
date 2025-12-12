@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import Link from "next/link";
 import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts";
 import { CheckCircle2, XCircle, ArrowRight, Pause, TrendingDown, Heart, Brain, Dumbbell, Music, Film, Cloud, Wrench } from "lucide-react";
+import Image from "next/image";
 
 export default function WhenNotToCancelPage() {
     const lastUpdated = "December 13, 2025";
@@ -96,12 +97,23 @@ export default function WhenNotToCancelPage() {
                                 <p className="text-black/70 mb-4">
                                     If you watch or listen regularly, the value can be real:
                                 </p>
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {["Netflix", "Disney+", "Hulu", "Max", "Spotify", "Apple Music", "YouTube Premium"].map((service) => (
-                                        <span key={service} className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/70">
-                                            {service}
-                                        </span>
-                                    ))}
+                                <div className="flex flex-wrap items-center gap-4 mb-4">
+                                    <div className="h-8 flex items-center">
+                                        <Image src="/Netflix.png" alt="Netflix" width={80} height={24} className="h-6 w-auto object-contain" />
+                                    </div>
+                                    <div className="h-8 flex items-center">
+                                        <Image src="/spotify.svg" alt="Spotify" width={80} height={24} className="h-6 w-auto object-contain" />
+                                    </div>
+                                    <div className="h-8 flex items-center">
+                                        <Image src="/amazon.png" alt="Amazon Prime" width={80} height={24} className="h-6 w-auto object-contain" />
+                                    </div>
+                                    <div className="h-8 flex items-center">
+                                        <Image src="/apple.jpg" alt="Apple" width={24} height={24} className="h-6 w-auto object-contain rounded" />
+                                    </div>
+                                    <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/70">Disney+</span>
+                                    <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/70">Hulu</span>
+                                    <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/70">Max</span>
+                                    <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/70">YouTube Premium</span>
                                 </div>
                                 <p className="text-sm text-black/50 italic">
                                     Rule of thumb: if you use it weekly, it's often worth it.
