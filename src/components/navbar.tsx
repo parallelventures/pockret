@@ -43,7 +43,7 @@ export function Navbar() {
 
     return (
         <header
-            className={`sticky top-0 z-50 w-full bg-white/70 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+            className={`sticky top-0 z-50 w-full bg-[#F9FAFB] transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
             style={{
                 backdropFilter: 'blur(24px) saturate(180%)',
                 WebkitBackdropFilter: 'blur(24px) saturate(180%)',
