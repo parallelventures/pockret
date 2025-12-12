@@ -103,8 +103,8 @@ export default function WhenNotToCancelPage() {
                                     If you watch or listen regularly, the value can be real:
                                 </p>
                                 <div className="flex flex-wrap items-center gap-4 mb-4">
-                                    <div className="h-8 flex items-center">
-                                        <Image src="/Netflix.png" alt="Netflix" width={80} height={24} className="h-6 w-auto object-contain" />
+                                    <div className="h-10 flex items-center">
+                                        <Image src="/Netflix.png" alt="Netflix" width={100} height={32} className="h-12 w-auto object-contain" />
                                     </div>
                                     <div className="h-8 flex items-center">
                                         <Image src="/spotify.svg" alt="Spotify" width={80} height={24} className="h-6 w-auto object-contain" />
@@ -113,7 +113,7 @@ export default function WhenNotToCancelPage() {
                                         <Image src="/amazon.png" alt="Amazon Prime" width={80} height={24} className="h-6 w-auto object-contain" />
                                     </div>
                                     <div className="h-8 flex items-center">
-                                        <Image src="/apple.jpg" alt="Apple" width={24} height={24} className="h-6 w-auto object-contain rounded" />
+                                        <Image src="/Apple_Logo_0.svg" alt="Apple" width={24} height={24} className="h-6 w-auto object-contain" />
                                     </div>
                                     <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/70">Disney+</span>
                                     <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/70">Hulu</span>
