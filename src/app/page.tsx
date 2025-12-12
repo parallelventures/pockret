@@ -87,7 +87,7 @@ export default function Home() {
                   webkit-playsinline="true"
                   x5-playsinline="true"
                 >
-                  <source src="https://res.cloudinary.com/do3c8fqwu/video/upload/v1765497722/360_1440x60_shots_so_r1uajc.mp4" type="video/mp4" />
+                  <source src="https://res.cloudinary.com/do3c8fqwu/video/upload/v1765505154/989_1440x60_shots_so_1_o24bgw.mp4" type="video/mp4" />
                 </video>
               </div>
             </div>
@@ -108,16 +108,14 @@ export default function Home() {
               </BlurFade>
 
               <BlurFade delay={0.5} duration={0.8} className="w-full">
-                <div className="flex flex-col w-full max-w-md gap-4">
+                <div className="flex flex-col w-full max-w-md gap-4 items-center">
                   <Link href="/login" className="w-full">
                     <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-14 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-lg transition-all active:scale-95 border-0`}>
                       Find My Money
                     </Button>
                   </Link>
-                  <Link href="/how-it-works" className="w-full">
-                    <Button variant="outline" size="lg" className={`${ppAgrandirHeading.className} w-full h-14 px-8 rounded-full border-2 border-gray-200 bg-white text-foreground font-bold text-lg hover:bg-gray-50 transition-all`}>
-                      How It Works
-                    </Button>
+                  <Link href="/how-it-works" className="text-black/50 hover:text-black transition-colors text-sm">
+                    How does it work? →
                   </Link>
                 </div>
               </BlurFade>

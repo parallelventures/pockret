@@ -54,6 +54,12 @@ export function Footer() {
                         <Link href="/learn/us-consumer-laws-2025" className="text-black/60 hover:text-black transition-colors text-sm">
                             U.S. Consumer Laws
                         </Link>
+                        <Link href="/learn/one-click-recovery" className="text-black/60 hover:text-black transition-colors text-sm">
+                            One-Click Recovery
+                        </Link>
+                        <Link href="/learn/subscription-trap" className="text-black/60 hover:text-black transition-colors text-sm">
+                            Subscription Trap
+                        </Link>
                         <Link href="/consumer-rights" className="text-black/60 hover:text-black transition-colors text-sm">
                             Consumer Rights
                         </Link>
