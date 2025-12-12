@@ -164,6 +164,9 @@ export function Footer() {
                         <p className="text-black/40 text-sm">
                             A product of Virtual World LLC.
                         </p>
+                        <span className="text-black/20 text-xs">
+                            v0.101
+                        </span>
                     </div>
                 </div>
             </div>
