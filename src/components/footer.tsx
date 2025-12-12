@@ -104,6 +104,9 @@ export function Footer() {
                         <Link href="/why" className="text-black/60 hover:text-black transition-colors text-sm">
                             Our Mission
                         </Link>
+                        <Link href="/reviews" className="text-black/60 hover:text-black transition-colors text-sm">
+                            Reviews
+                        </Link>
                         <Link href="/careers" className="text-black/60 hover:text-black transition-colors text-sm">
                             Careers
                         </Link>

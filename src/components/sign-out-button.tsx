@@ -1,9 +1,7 @@
 'use client'
 
-import { Button } from "@/components/ui/button"
 import { createClient } from "@/lib/supabase"
 import { useRouter } from "next/navigation"
-import { LogOut } from "lucide-react"
 
 export function SignOutButton() {
     const supabase = createClient()
@@ -16,13 +14,11 @@ export function SignOutButton() {
     }
 
     return (
-        <Button
+        <button
             onClick={handleSignOut}
-            variant="outline"
-            className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50 border-red-100"
+            className="text-black/60 hover:text-black text-sm transition-colors"
         >
-            <LogOut className="w-4 h-4 mr-2" />
-            Sign Out
-        </Button>
+            Sign out
+        </button>
     )
 }

@@ -2,10 +2,9 @@
 
 import { useState, useTransition } from 'react'
 import { Modal } from '@/components/ui/modal'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import { addSubscription } from '@/app/actions/subscriptions'
 import { Loader2 } from 'lucide-react'
+import { ppAgrandirHeading } from '@/app/fonts'
 
 interface AddSubscriptionModalProps {
     isOpen: boolean
@@ -25,7 +24,7 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
         const nextRenewalDate = formData.get('next_renewal_date') as string
 
         if (!name || !amount || !nextRenewalDate) {
-            setError('Please fill in all required fields.')
+            setError('Please fill in all fields.')
             return
         }
 
@@ -42,42 +41,42 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                 })
                 onClose()
             } catch (e) {
-                setError('Failed to add subscription. Please try again.')
+                setError('Failed to add. Please try again.')
             }
         })
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose} title="Add Subscription">
-            <form action={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Service Name</label>
-                    <Input
+        <Modal isOpen={isOpen} onClose={onClose} title="Add subscription">
+            <form action={handleSubmit} className="space-y-6">
+                <div>
+                    <label className="block text-sm text-black/60 mb-2">Name</label>
+                    <input
                         name="name"
                         placeholder="Netflix, Spotify, etc."
                         required
-                        className="bg-gray-50 border-gray-200"
+                        className="w-full px-4 py-3 bg-black/[0.02] border border-black/10 rounded-xl text-black placeholder:text-black/30 focus:outline-none focus:border-black/30 transition-colors"
                     />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-700">Amount</label>
-                        <Input
+                    <div>
+                        <label className="block text-sm text-black/60 mb-2">Amount</label>
+                        <input
                             name="amount"
                             type="number"
                             step="0.01"
                             placeholder="0.00"
                             required
-                            className="bg-gray-50 border-gray-200"
+                            className="w-full px-4 py-3 bg-black/[0.02] border border-black/10 rounded-xl text-black placeholder:text-black/30 focus:outline-none focus:border-black/30 transition-colors"
                         />
                     </div>
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-700">Currency</label>
+                    <div>
+                        <label className="block text-sm text-black/60 mb-2">Currency</label>
                         <select
                             name="currency"
-                            className="flex h-12 w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-base shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             defaultValue="USD"
+                            className="w-full px-4 py-3 bg-black/[0.02] border border-black/10 rounded-xl text-black focus:outline-none focus:border-black/30 transition-colors appearance-none"
                         >
                             <option value="USD">USD ($)</option>
                             <option value="EUR">EUR (€)</option>
@@ -87,47 +86,46 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-700">Billing Cycle</label>
+                    <div>
+                        <label className="block text-sm text-black/60 mb-2">Billing cycle</label>
                         <select
                             name="billing_cycle"
-                            className="flex h-12 w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-base shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                             defaultValue="monthly"
+                            className="w-full px-4 py-3 bg-black/[0.02] border border-black/10 rounded-xl text-black focus:outline-none focus:border-black/30 transition-colors appearance-none"
                         >
                             <option value="monthly">Monthly</option>
                             <option value="yearly">Yearly</option>
                             <option value="weekly">Weekly</option>
                         </select>
                     </div>
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-700">Next Renewal</label>
-                        <Input
+                    <div>
+                        <label className="block text-sm text-black/60 mb-2">Next renewal</label>
+                        <input
                             name="next_renewal_date"
                             type="date"
                             required
-                            className="bg-gray-50 border-gray-200"
+                            className="w-full px-4 py-3 bg-black/[0.02] border border-black/10 rounded-xl text-black focus:outline-none focus:border-black/30 transition-colors"
                         />
                     </div>
                 </div>
 
                 {error && (
-                    <p className="text-sm text-red-500 font-medium">{error}</p>
+                    <p className="text-sm text-red-500">{error}</p>
                 )}
 
-                <div className="pt-4 flex justify-end gap-2">
-                    <Button
+                <div className="flex gap-3 pt-2">
+                    <button
                         type="button"
-                        variant="outline"
                         onClick={onClose}
                         disabled={isPending}
-                        className="border-gray-200 text-gray-700 hover:bg-gray-50"
+                        className="flex-1 px-6 py-3 rounded-xl border border-black/10 text-black/60 hover:border-black/20 transition-colors"
                     >
                         Cancel
-                    </Button>
-                    <Button
+                    </button>
+                    <button
                         type="submit"
                         disabled={isPending}
-                        className="bg-[#16A34A] hover:bg-[#15803d] text-white"
+                        className={`${ppAgrandirHeading.className} flex-1 px-6 py-3 rounded-xl bg-black text-white font-bold hover:bg-black/90 transition-colors flex items-center justify-center`}
                     >
                         {isPending ? (
                             <>
@@ -135,9 +133,9 @@ export function AddSubscriptionModal({ isOpen, onClose }: AddSubscriptionModalPr
                                 Adding...
                             </>
                         ) : (
-                            'Add Subscription'
+                            'Add'
                         )}
-                    </Button>
+                    </button>
                 </div>
             </form>
         </Modal>

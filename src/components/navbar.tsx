@@ -3,10 +3,8 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useUser } from '@/hooks/use-user'
-import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
-
 import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts";
 
 export function Navbar() {
@@ -60,14 +58,18 @@ export function Navbar() {
                     {!loading && (
                         <>
                             {user ? (
-                                <div className="flex items-center gap-4">
-                                    <Link href="/dashboard">
-                                        <Button variant="ghost" className="font-bold text-text-muted hover:bg-accent/50 uppercase tracking-wide">Dashboard</Button>
+                                <div className="flex items-center gap-6">
+                                    <Link
+                                        href="/dashboard"
+                                        className="text-sm text-black/50 hover:text-black transition-colors"
+                                    >
+                                        Dashboard
                                     </Link>
-                                    <Link href="/profile">
-                                        <Button variant="ghost" className="font-bold text-text-muted hover:bg-accent/50 uppercase tracking-wide">
-                                            Profile
-                                        </Button>
+                                    <Link
+                                        href="/profile"
+                                        className="text-sm text-black/50 hover:text-black transition-colors"
+                                    >
+                                        Settings
                                     </Link>
                                 </div>
                             ) : (

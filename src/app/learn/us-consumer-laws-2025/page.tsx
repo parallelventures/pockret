@@ -25,7 +25,7 @@ export default function ConsumerLawsArticle() {
 
                     {/* Header */}
                     <header className="mb-12">
-                        <div className="flex items-center gap-2 text-blue-600 font-bold text-sm uppercase tracking-wider mb-4">
+                        <div className="flex items-center gap-2 text-black/40 text-sm mb-4">
                             <Clock className="w-4 h-4" />
                             <span>7 min read</span>
                         </div>
