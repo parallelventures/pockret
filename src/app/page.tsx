@@ -18,6 +18,15 @@ export default function Home() {
     const video = videoRef.current;
     if (!video) return;
 
+    // Force autoplay on mount (Safari fix)
+    const playVideo = () => {
+      video.play().catch(() => {
+        // Autoplay blocked, user interaction required
+      });
+    };
+
+    playVideo();
+
     const handleTimeUpdate = () => {
       if (video.duration && video.currentTime >= video.duration - 0.1) {
         video.currentTime = 0;

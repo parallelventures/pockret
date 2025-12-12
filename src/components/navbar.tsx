@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 
-import { ppAgrandirHeading } from "@/app/fonts";
+import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts";
 
 export function Navbar() {
     const { user, loading } = useUser()
@@ -70,9 +70,9 @@ export function Navbar() {
                                 </div>
                             ) : (
                                 <Link href="/login">
-                                    <Button variant="ghost" className="font-bold text-text-muted hover:bg-accent/50 uppercase tracking-wide">
-                                        I ALREADY HAVE AN ACCOUNT
-                                    </Button>
+                                    <button className={`${sfProDisplay.className} px-4 py-2 text-sm font-medium text-black/60 hover:text-black transition-colors duration-200 cursor-pointer`}>
+                                        Sign In
+                                    </button>
                                 </Link>
                             )}
                         </>
