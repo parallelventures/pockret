@@ -1,7 +1,18 @@
 import localFont from "next/font/local";
 
 export const ppAgrandirHeading = localFont({
-    src: "../fonts/Agrandir Narrow Bold.woff2",
+    src: [
+        {
+            path: "../fonts/Agrandir Narrow Bold.woff2",
+            weight: "700",
+            style: "normal",
+        },
+        {
+            path: "../fonts/Agrandir Narrow Bold.otf",
+            weight: "700",
+            style: "normal",
+        },
+    ],
     variable: "--font-heading",
     display: "swap",
 });
