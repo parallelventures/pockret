@@ -114,6 +114,50 @@ export type Database = {
                     metadata?: Json | null
                 }
             }
+            tracked_subscriptions: {
+                Row: {
+                    id: string
+                    user_id: string
+                    name: string
+                    amount: number
+                    currency: string
+                    billing_cycle: 'monthly' | 'yearly' | 'weekly' | 'daily' | null
+                    next_renewal_date: string | null
+                    source: 'email' | 'manual'
+                    status: 'active' | 'cancelled'
+                    logo_url: string | null
+                    created_at: string
+                    updated_at: string
+                }
+                Insert: {
+                    id?: string
+                    user_id: string
+                    name: string
+                    amount: number
+                    currency?: string
+                    billing_cycle?: 'monthly' | 'yearly' | 'weekly' | 'daily' | null
+                    next_renewal_date?: string | null
+                    source?: 'email' | 'manual'
+                    status?: 'active' | 'cancelled'
+                    logo_url?: string | null
+                    created_at?: string
+                    updated_at?: string
+                }
+                Update: {
+                    id?: string
+                    user_id?: string
+                    name?: string
+                    amount?: number
+                    currency?: string
+                    billing_cycle?: 'monthly' | 'yearly' | 'weekly' | 'daily' | null
+                    next_renewal_date?: string | null
+                    source?: 'email' | 'manual'
+                    status?: 'active' | 'cancelled'
+                    logo_url?: string | null
+                    created_at?: string
+                    updated_at?: string
+                }
+            }
         }
     }
 }

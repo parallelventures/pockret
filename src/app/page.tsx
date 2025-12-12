@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link";
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -11,6 +12,33 @@ import { BlurFade, StaggerContainer, fadeInUpVariant } from "@/components/ui/ani
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => {
+      if (video.duration && video.currentTime >= video.duration - 0.1) {
+        video.currentTime = 0;
+        video.play();
+      }
+    };
+
+    const handleEnded = () => {
+      video.currentTime = 0;
+      video.play();
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('ended', handleEnded);
+
+    return () => {
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('ended', handleEnded);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F9FAFB]">
       <Navbar />
@@ -22,18 +50,19 @@ export default function Home() {
 
             {/* Left: Visual (Mobile: Order 2, Desktop: Order 1) */}
             <div className="order-2 md:order-1 relative z-10 flex justify-center md:justify-end">
-              <BlurFade delay={0.2} duration={0.8} yOffset={30}>
-                <div className="relative w-64 h-64 md:w-96 md:h-96">
-                  {/* Abstract representation of the Wallet Character */}
-                  <div className="absolute inset-0 bg-[#0F172A]/10 rounded-[3rem] rotate-3 blur-3xl"></div>
-                  <div className="absolute inset-4 bg-white border border-gray-100 rounded-[2.5rem] flex items-center justify-center">
-                    <div className="text-9xl filter drop-shadow-sm">👛</div>
-                    <div className="absolute -top-4 -right-4 bg-white text-[#0F172A] font-bold px-6 py-3 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] rotate-12 border border-gray-100">
-                      Found it!
-                    </div>
-                  </div>
-                </div>
-              </BlurFade>
+              <div className="relative w-full max-w-2xl">
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="w-full h-auto rounded-3xl"
+                >
+                  <source src="https://res.cloudinary.com/do3c8fqwu/video/upload/v1765497722/360_1440x60_shots_so_r1uajc.mp4" type="video/mp4" />
+                </video>
+              </div>
             </div>
 
             {/* Right: Content (Mobile: Order 1, Desktop: Order 2) */}
