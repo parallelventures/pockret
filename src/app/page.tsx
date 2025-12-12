@@ -18,14 +18,28 @@ export default function Home() {
     const video = videoRef.current;
     if (!video) return;
 
-    // Force autoplay on mount (Safari fix)
+    // Force muted for Safari autoplay
+    video.muted = true;
+    video.defaultMuted = true;
+
+    // Try to play immediately and on canplay
     const playVideo = () => {
-      video.play().catch(() => {
-        // Autoplay blocked, user interaction required
-      });
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Retry after a short delay (Safari sometimes needs this)
+          setTimeout(() => {
+            video.play().catch(() => { });
+          }, 100);
+        });
+      }
     };
 
+    // Play on mount
     playVideo();
+
+    // Also play when video is ready
+    video.addEventListener('canplay', playVideo);
 
     const handleTimeUpdate = () => {
       if (video.duration && video.currentTime >= video.duration - 0.1) {
@@ -43,6 +57,7 @@ export default function Home() {
     video.addEventListener('ended', handleEnded);
 
     return () => {
+      video.removeEventListener('canplay', playVideo);
       video.removeEventListener('timeupdate', handleTimeUpdate);
       video.removeEventListener('ended', handleEnded);
     };
@@ -68,6 +83,9 @@ export default function Home() {
                   playsInline
                   preload="auto"
                   className="w-full h-auto rounded-3xl"
+                  // @ts-ignore - Safari specific attributes
+                  webkit-playsinline="true"
+                  x5-playsinline="true"
                 >
                   <source src="https://res.cloudinary.com/do3c8fqwu/video/upload/v1765497722/360_1440x60_shots_so_r1uajc.mp4" type="video/mp4" />
                 </video>
