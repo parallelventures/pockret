@@ -111,7 +111,7 @@ export default function DisclaimerTransparencyPage() {
                                     Therefore, Pockret cannot guarantee that any guide, link, or description is complete, current, or error-free at all times.
                                 </p>
                                 <p>
-                                    If you spot outdated information, please report it at <a href="mailto:support@pockret.com" className="text-black underline underline-offset-4 hover:text-black/70 transition-colors">support@pockret.com</a>.
+                                    If you spot outdated information, please report it at <a href="mailto:help@pockret.com" className="text-black underline underline-offset-4 hover:text-black/70 transition-colors">help@pockret.com</a>.
                                 </p>
                             </div>
                         </div>
@@ -260,8 +260,8 @@ export default function DisclaimerTransparencyPage() {
                                             <Mail className="w-5 h-5 text-black/40" />
                                             <span className="font-medium text-black">Support</span>
                                         </div>
-                                        <a href="mailto:support@pockret.com" className="text-black/60 hover:text-black transition-colors text-sm">
-                                            support@pockret.com
+                                        <a href="mailto:help@pockret.com" className="text-black/60 hover:text-black transition-colors text-sm">
+                                            help@pockret.com
                                         </a>
                                     </div>
                                     <div className="bg-white rounded-xl p-5 border border-black/5">

@@ -30,7 +30,7 @@ export default function LegalPage() {
                             <p><strong>Registration:</strong> Limited Liability Company (LLC)</p>
                             <p><strong>State of Incorporation:</strong> New Mexico, USA</p>
                             <p><strong>EIN:</strong> Provided upon request</p>
-                            <p><strong>Email:</strong> <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a></p>
+                            <p><strong>Email:</strong> <a href="mailto:help@pockret.com" className="text-primary hover:underline">help@pockret.com</a></p>
                             <p><strong>Website:</strong> <a href="https://pockret.com" className="text-primary hover:underline">https://pockret.com</a></p>
                         </div>
                     </section>
@@ -97,7 +97,7 @@ export default function LegalPage() {
                             <li>No refund, reimbursement, or settlement may have been received or be pending as a result of Pockret’s tools.</li>
                         </ul>
                         <p className="mt-2">
-                            To request a refund, email <strong><a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a></strong> with your receipt and purchase email.
+                            To request a refund, email <strong><a href="mailto:help@pockret.com" className="text-primary hover:underline">help@pockret.com</a></strong> with your receipt and purchase email.
                             Refunds are processed within <strong>7–10 business days</strong> via the original payment method.
                         </p>
                         <p className="text-sm italic mt-2">This policy complies with Stripe guidelines for digital services.</p>
@@ -159,7 +159,7 @@ export default function LegalPage() {
                         <h2 className={`${ppAgrandirHeading.className} text-xl font-semibold text-foreground mb-2`}>10. Contact Information</h2>
                         <p>For support, legal inquiries, or refund requests:</p>
                         <p>
-                            📧 <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a><br />
+                            📧 <a href="mailto:help@pockret.com" className="text-primary hover:underline">help@pockret.com</a><br />
                             📍 Virtual World LLC, 1209 Mountain Road Place Northeast STE R, Albuquerque, NM 87110, USA
                         </p>
                     </section>

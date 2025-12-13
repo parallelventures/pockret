@@ -359,7 +359,7 @@ Before deleting, remember:
 
 ### For billing questions
 
-If you have billing concerns, contact us first at support@pockret.com. We may be able to resolve your issue without account deletion.
+If you have billing concerns, contact us first at help@pockret.com. We may be able to resolve your issue without account deletion.
 
 ### Data retention
 
@@ -615,7 +615,7 @@ Depending on the situation:
 
 ### Still have questions?
 
-Contact support@pockret.com and we'll help you understand your options.
+Contact help@pockret.com and we'll help you understand your options.
             `,
             relatedArticles: ["recovery-success-rate", "how-to-recover"],
         },
@@ -740,7 +740,7 @@ Update your name and preferences in Settings → Profile.
 
 ### Need help?
 
-Contact support@pockret.com if you're having trouble updating your information.
+Contact help@pockret.com if you're having trouble updating your information.
             `,
             relatedArticles: ["cancel-account", "delete-account"],
         },
@@ -786,7 +786,7 @@ If you have successful recoveries being processed:
 
 ### Questions before canceling?
 
-Email support@pockret.com - we may be able to help resolve any concerns.
+Email help@pockret.com - we may be able to help resolve any concerns.
             `,
             relatedArticles: ["delete-account", "billing-issues"],
         },
@@ -810,7 +810,7 @@ Review the recovery details in your dashboard. Our fee is exactly 20% of recover
 
 ### Disputing a charge
 
-1. Email support@pockret.com
+1. Email help@pockret.com
 2. Include the charge date and amount
 3. Describe the issue
 4. We respond within 24 hours
@@ -878,7 +878,7 @@ Some smaller banks or credit unions may have limited Plaid support. Contact us i
 
 ### Still not working?
 
-Email support@pockret.com with:
+Email help@pockret.com with:
 - Your bank name
 - Error message (if any)
 - Screenshot if possible
@@ -928,7 +928,7 @@ Plaid updates data regularly, but:
 
 ### Contact support
 
-If problems persist, email support@pockret.com with:
+If problems persist, email help@pockret.com with:
 - Description of the issue
 - Screenshot of any errors
 - Names of connected banks
@@ -1029,7 +1029,7 @@ After multiple failed attempts:
 ### Verification email not received
 
 - Check spam/junk folder
-- Add support@pockret.com to contacts
+- Add help@pockret.com to contacts
 - Request a new verification email
 - Contact support if issues persist
             `,
@@ -1216,14 +1216,14 @@ We comply with:
 ### Reporting issues
 
 Report concerns to:
-- support@pockret.com
+- help@pockret.com
 - Your state attorney general
 - Consumer Financial Protection Bureau (CFPB)
 - Federal Trade Commission (FTC)
 
 ### Questions?
 
-Contact us at support@pockret.com for any regulatory or compliance questions.
+Contact us at help@pockret.com for any regulatory or compliance questions.
             `,
             relatedArticles: ["terms-of-service", "privacy-policy"],
         },

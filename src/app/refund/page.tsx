@@ -50,7 +50,7 @@ export default function RefundPolicyPage() {
                             <li>Your request is made within <strong>14 days</strong> of purchase.</li>
                         </ol>
                         <p className="mt-4">
-                            Just email us at <a href="mailto:support@pockret.com" className="text-primary hover:underline font-bold">support@pockret.com</a> with your receipt and the email you used for purchase.
+                            Just email us at <a href="mailto:help@pockret.com" className="text-primary hover:underline font-bold">help@pockret.com</a> with your receipt and the email you used for purchase.
                             Our team will review and respond within <strong>5 business days</strong>.
                         </p>
 
@@ -77,7 +77,7 @@ export default function RefundPolicyPage() {
 
                         <h3 className={`${ppAgrandirHeading.className} text-xl font-bold mt-8 mb-4`}>Contact</h3>
                         <p>
-                            <a href="mailto:support@pockret.com" className="text-primary hover:underline font-bold">support@pockret.com</a>
+                            <a href="mailto:help@pockret.com" className="text-primary hover:underline font-bold">help@pockret.com</a>
                             <br />
                             <Link href="/" className="text-primary hover:underline">https://pockret.com</Link>
                         </p>

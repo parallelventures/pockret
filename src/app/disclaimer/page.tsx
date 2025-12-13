@@ -70,7 +70,7 @@ export default function DisclaimerPage() {
                         <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>Contact</h2>
                         <p>
                             For questions about this disclaimer:<br />
-                            📧 <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a><br />
+                            📧 <a href="mailto:help@pockret.com" className="text-primary hover:underline">help@pockret.com</a><br />
                             📍 Virtual World LLC, Albuquerque, NM
                         </p>
                     </section>

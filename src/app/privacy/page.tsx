@@ -26,7 +26,7 @@ export default function PrivacyPage() {
                             <p>1209 Mountain Road Place Northeast, Suite R<br />
                                 Albuquerque, NM 87110, United States</p>
                             <p className="mt-3">
-                                Email: <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a><br />
+                                Email: <a href="mailto:help@pockret.com" className="text-primary hover:underline">help@pockret.com</a><br />
                                 Website: <a href="https://pockret.com" className="text-primary hover:underline">https://pockret.com</a>
                             </p>
                         </div>
@@ -132,7 +132,7 @@ export default function PrivacyPage() {
                             <li>Object to processing (where applicable)</li>
                         </ul>
                         <p className="mt-2">
-                            Contact: <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a>
+                            Contact: <a href="mailto:help@pockret.com" className="text-primary hover:underline">help@pockret.com</a>
                         </p>
                     </section>
 
@@ -173,7 +173,7 @@ export default function PrivacyPage() {
                         <h2 className={`${ppAgrandirHeading.className} text-2xl font-semibold text-foreground mb-3 mt-8`}>12. Contact</h2>
                         <p>
                             For questions or privacy requests:<br />
-                            📧 <a href="mailto:support@pockret.com" className="text-primary hover:underline">support@pockret.com</a><br />
+                            📧 <a href="mailto:help@pockret.com" className="text-primary hover:underline">help@pockret.com</a><br />
                             📍 Virtual World LLC, Albuquerque, NM
                         </p>
                     </section>

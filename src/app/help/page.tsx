@@ -133,7 +133,7 @@ export default function HelpCenterPage() {
                                 Our team is here to help.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <a href="mailto:support@pockret.com">
+                                <a href="mailto:help@pockret.com">
                                     <button className={`${ppAgrandirHeading.className} px-8 py-3 rounded-full bg-black text-white font-bold hover:bg-black/90 transition-colors cursor-pointer`}>
                                         Contact Support
                                     </button>

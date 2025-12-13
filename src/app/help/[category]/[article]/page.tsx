@@ -127,7 +127,7 @@ export default async function HelpArticlePage({
                         <p className="text-black/60 mb-4">
                             Didn't find what you were looking for?
                         </p>
-                        <a href="mailto:support@pockret.com" className="text-black font-medium hover:underline">
+                        <a href="mailto:help@pockret.com" className="text-black font-medium hover:underline">
                             Contact Support →
                         </a>
                     </div>
