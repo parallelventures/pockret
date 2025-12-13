@@ -84,7 +84,7 @@ export default function NetflixCancelGuidePage() {
                                 <h3 className={`${ppAgrandirHeading.className} text-lg font-bold text-black mb-4`}>
                                     If you pay Netflix directly (card / PayPal / etc.)
                                 </h3>
-                                <ol className="space-y-3 text-black/70">
+                                <ol className="space-y-3 text-black/70 mb-6">
                                     <li className="flex items-start gap-3">
                                         <span className="w-6 h-6 rounded-full bg-black text-white text-sm flex items-center justify-center flex-shrink-0">1</span>
                                         <span>Go to <strong className="text-black">Cancel Plan</strong>: <a href="https://www.netflix.com/cancelplan" target="_blank" rel="noopener noreferrer" className="text-red-600 underline underline-offset-2 hover:text-red-700">netflix.com/cancelplan</a></span>
@@ -98,6 +98,15 @@ export default function NetflixCancelGuidePage() {
                                         <span>Your account stays active until the end of the billing period, and you won't be charged again after that.</span>
                                     </li>
                                 </ol>
+                                <div className="rounded-xl overflow-hidden border border-black/10">
+                                    <Image
+                                        src="/cancel_netflix.png"
+                                        alt="Netflix cancellation screen"
+                                        width={800}
+                                        height={500}
+                                        className="w-full h-auto"
+                                    />
+                                </div>
                             </div>
 
                             <div className="bg-amber-50 rounded-2xl p-6 border border-amber-100">
