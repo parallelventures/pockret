@@ -99,9 +99,14 @@ export default function PrivacyPage() {
                             <li><strong>Stripe</strong> (payments)</li>
                             <li><strong>Email providers</strong></li>
                             <li><strong>Cloud hosting providers</strong></li>
-                            <li><strong>Banking data aggregators</strong> (if you choose to connect them)</li>
+                            <li><strong>Plaid</strong> (banking data aggregation – if you choose to connect your accounts)</li>
                             <li><strong>Analytics services</strong></li>
                         </ul>
+                        <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 mt-4">
+                            <p className="text-sm">
+                                <strong>About Plaid:</strong> When users choose to link their financial accounts, Pockret accesses read-only data via Plaid, which securely transmits information from the user's financial institution. Pockret does not store or have access to users' banking credentials.
+                            </p>
+                        </div>
                         <p className="mt-3 font-medium">
                             We do <strong>NOT</strong> sell personal data.<br />
                             We do <strong>NOT</strong> share data with advertisers or brokers.
