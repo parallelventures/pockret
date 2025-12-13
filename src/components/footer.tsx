@@ -82,6 +82,9 @@ export function Footer() {
                         <Link href="/guides/netflix" className="text-black/60 hover:text-black transition-colors text-sm">
                             Cancel Netflix
                         </Link>
+                        <Link href="/guides/apple-refund" className="text-black/60 hover:text-black transition-colors text-sm">
+                            App Store Refunds
+                        </Link>
                     </div>
 
                     {/* Legal */}

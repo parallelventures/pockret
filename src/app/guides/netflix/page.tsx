@@ -6,6 +6,9 @@ import Link from "next/link";
 import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts";
 import { ExternalLink, Phone, MessageCircle, AlertTriangle, CheckCircle2, Clock, CreditCard, Shield } from "lucide-react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const ArticleCTAGradient = dynamic(() => import("@/components/article-cta-gradient"), { ssr: false });
 
 export default function NetflixCancelGuidePage() {
     const lastUpdated = "December 2025";
@@ -312,36 +315,23 @@ export default function NetflixCancelGuidePage() {
                 </section>
 
                 {/* Pockret CTA */}
-                <section className="py-16 px-6 bg-white border-t border-black/5">
+                <section className="py-16 px-6">
                     <div className="max-w-3xl mx-auto">
-                        <div className="bg-gradient-to-br from-black to-zinc-800 rounded-3xl p-8 md:p-10">
-                            <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-white mb-4`}>
-                                How Pockret helps (without the headache)
-                            </h2>
-                            <p className="text-white/70 mb-6">
-                                Pockret is built to make this whole thing <em>stupidly simple</em>:
-                            </p>
-                            <ul className="space-y-3 mb-8">
-                                {[
-                                    "detects recurring charges like Netflix automatically",
-                                    "flags \"charged after cancel\" / duplicate-looking patterns",
-                                    "keeps a clean timeline of what you paid and when",
-                                    "generates a ready-to-send support request (and keeps your evidence organized)"
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-white/80">
-                                        <CheckCircle2 className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <p className="text-white/60 mb-6">
-                                <strong className="text-white">You stay in control</strong> — Pockret helps you move fast, stay organized, and stop leaks.
-                            </p>
-                            <Link href="/login">
-                                <button className={`${ppAgrandirHeading.className} px-8 py-3 rounded-full bg-white hover:bg-white/90 text-black font-bold text-base transition-all active:scale-95 cursor-pointer`}>
-                                    Start Your Pockret Scan
-                                </button>
-                            </Link>
+                        <div className="relative overflow-hidden rounded-2xl p-8 text-center">
+                            <ArticleCTAGradient />
+                            <div className="relative z-10">
+                                <h3 className={`${ppAgrandirHeading.className} text-2xl font-bold text-black mb-4`}>
+                                    How Pockret helps (without the headache)
+                                </h3>
+                                <p className="text-black/60 mb-6">
+                                    Detect recurring charges, flag suspicious patterns, and generate ready-to-send support requests.
+                                </p>
+                                <Link href="/login">
+                                    <button className={`${ppAgrandirHeading.className} bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-black/90 transition-colors cursor-pointer`}>
+                                        Get Started Free
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </section>

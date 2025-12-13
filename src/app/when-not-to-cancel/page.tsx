@@ -4,8 +4,11 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import Link from "next/link";
 import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts";
-import { CheckCircle2, XCircle, ArrowRight, Pause, TrendingDown, Heart, Brain, Dumbbell, Cloud, Wrench } from "lucide-react";
+import { CheckCircle2, XCircle, Pause, TrendingDown, Heart, Brain, Dumbbell, Cloud, Wrench } from "lucide-react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const ArticleCTAGradient = dynamic(() => import("@/components/article-cta-gradient"), { ssr: false });
 
 export default function WhenNotToCancelPage() {
     const lastUpdated = "December 13, 2025";
@@ -365,20 +368,24 @@ export default function WhenNotToCancelPage() {
                 </section>
 
                 {/* CTA Section */}
-                <section className="py-16 px-6 bg-white border-t border-black/5">
-                    <div className="max-w-2xl mx-auto text-center">
-                        <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-6`}>
-                            Ready to find your money?
-                        </h2>
-                        <p className="text-black/60 mb-8">
-                            Scan your accounts. See what you're really paying for.
-                        </p>
-                        <Link href="/login" className="w-full max-w-sm inline-block">
-                            <button className={`${ppAgrandirHeading.className} w-full h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-2`}>
-                                Start Your Pockret Scan
-                                <ArrowRight className="w-4 h-4" />
-                            </button>
-                        </Link>
+                <section className="py-16 px-6">
+                    <div className="max-w-3xl mx-auto">
+                        <div className="relative overflow-hidden rounded-2xl p-8 text-center">
+                            <ArticleCTAGradient />
+                            <div className="relative z-10">
+                                <h3 className={`${ppAgrandirHeading.className} text-2xl font-bold text-black mb-4`}>
+                                    Ready to find your money?
+                                </h3>
+                                <p className="text-black/60 mb-6">
+                                    Scan your accounts. See what you're really paying for.
+                                </p>
+                                <Link href="/login">
+                                    <button className={`${ppAgrandirHeading.className} bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-black/90 transition-colors cursor-pointer`}>
+                                        Get Started Free
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
