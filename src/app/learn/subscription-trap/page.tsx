@@ -6,6 +6,7 @@ import { ppAgrandirHeading, sfProDisplay } from "../../fonts";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ArrowRight, Clock } from "lucide-react";
+import Image from "next/image";
 
 const ArticleCTAGradient = dynamic(() => import("@/components/article-cta-gradient"), { ssr: false });
 
@@ -25,6 +26,15 @@ export default function SubscriptionTrapArticle() {
 
                     {/* Header */}
                     <header className="mb-12">
+                        <div className="mb-8">
+                            <Image
+                                src="/subscriptions.png"
+                                alt="Subscription costs illustration"
+                                width={800}
+                                height={400}
+                                className="w-full h-auto rounded-2xl"
+                            />
+                        </div>
                         <div className="flex items-center gap-2 text-sm text-black/40 font-medium mb-4">
                             <Clock className="w-4 h-4" />
                             <span>6 min read</span>
