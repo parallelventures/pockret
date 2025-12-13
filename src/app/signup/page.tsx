@@ -6,13 +6,13 @@ import { Navbar } from '@/components/navbar'
 import Link from 'next/link'
 import { ppAgrandirHeading, sfProDisplay } from '../fonts'
 
-export default function LoginPage() {
+export default function SignupPage() {
     const [email, setEmail] = useState('')
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState<string | null>(null)
     const supabase = createClient()
 
-    const handleLogin = async (e: React.FormEvent) => {
+    const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
         setMessage(null)
@@ -27,7 +27,7 @@ export default function LoginPage() {
         if (error) {
             setMessage(error.message)
         } else {
-            setMessage('Check your email for the login link!')
+            setMessage('Check your email for the confirmation link!')
         }
         setLoading(false)
     }
@@ -50,10 +50,10 @@ export default function LoginPage() {
                     {/* Header */}
                     <div className="text-center mb-10">
                         <h1 className={`${ppAgrandirHeading.className} text-3xl md:text-4xl font-bold text-black mb-3`}>
-                            Welcome back
+                            Get your money back.
                         </h1>
                         <p className="text-black/50 text-sm">
-                            Sign in to manage your subscriptions
+                            Find hidden subscriptions. Cancel what you don't use.
                         </p>
                     </div>
 
@@ -93,7 +93,7 @@ export default function LoginPage() {
                     </div>
 
                     {/* Email Form */}
-                    <form onSubmit={handleLogin} className="space-y-4">
+                    <form onSubmit={handleSignup} className="space-y-4">
                         <div>
                             <input
                                 id="email"
@@ -117,15 +117,15 @@ export default function LoginPage() {
                             disabled={loading}
                             className={`${ppAgrandirHeading.className} w-full h-12 bg-black text-white rounded-full font-bold text-sm hover:bg-black/90 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed`}
                         >
-                            {loading ? 'Sending...' : 'Send Magic Link'}
+                            {loading ? 'Sending...' : 'Get Started'}
                         </button>
                     </form>
 
-                    {/* Don't have account */}
+                    {/* Already have account */}
                     <p className="text-center text-sm text-black/40 mt-8">
-                        Don't have an account?{' '}
-                        <Link href="/signup" className="text-black font-medium hover:underline">
-                            Sign up
+                        Already have an account?{' '}
+                        <Link href="/login" className="text-black font-medium hover:underline">
+                            Sign in
                         </Link>
                     </p>
 
