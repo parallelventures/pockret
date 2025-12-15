@@ -38,20 +38,30 @@ export default function HowItWorksPage() {
                                         <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
                                             Connect your bank
                                         </h2>
-                                        <p className="text-black/60 text-lg leading-relaxed mb-6">
+                                        <p className="text-black/60 text-lg leading-relaxed mb-4">
                                             Securely link your accounts through Plaid. We use the same bank-level encryption that Venmo, Chime, and 12,000+ financial institutions trust.
                                         </p>
-                                        <div className="flex items-center gap-2 text-sm text-black/40">
-                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                            </svg>
-                                            <span>256-bit encryption • Read-only access</span>
-                                        </div>
+                                        <Link
+                                            href="https://plaid.com"
+                                            target="_blank"
+                                            className="inline-flex items-center gap-3 pl-3 pr-5 py-2 bg-black/[0.03] rounded-full hover:bg-black/[0.06] transition-colors"
+                                        >
+                                            <img src="/Plaid.svg" alt="Plaid" className="h-10" />
+                                            <span className="text-sm text-black/50">Secured by Plaid</span>
+                                        </Link>
                                     </div>
                                 </div>
-                                <div className="w-full lg:w-64 flex-shrink-0">
-                                    <div className="aspect-square bg-black/5 rounded-2xl flex items-center justify-center">
-                                        <span className="text-black/20 text-sm">Video 1</span>
+                                <div className="w-full lg:w-96 flex-shrink-0">
+                                    <div className="aspect-square bg-black/5 rounded-2xl overflow-hidden">
+                                        <video
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            className="w-full h-full object-cover"
+                                        >
+                                            <source src="https://res.cloudinary.com/do3c8fqwu/video/upload/v1765758895/Area_epsuug.mp4" type="video/mp4" />
+                                        </video>
                                     </div>
                                 </div>
                             </div>
@@ -80,9 +90,13 @@ export default function HowItWorksPage() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="w-full lg:w-64 flex-shrink-0">
-                                    <div className="aspect-square bg-black/5 rounded-2xl flex items-center justify-center">
-                                        <span className="text-black/20 text-sm">Video 2</span>
+                                <div className="w-full lg:w-96 flex-shrink-0">
+                                    <div className="aspect-square bg-black/5 rounded-2xl overflow-hidden">
+                                        <img
+                                            src="https://res.cloudinary.com/do3c8fqwu/image/upload/v1765815389/Video2_rqupsi.png"
+                                            alt="Scan visualization"
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +126,7 @@ export default function HowItWorksPage() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="w-full lg:w-64 flex-shrink-0">
+                                <div className="w-full lg:w-96 flex-shrink-0">
                                     <div className="aspect-square bg-black/5 rounded-2xl flex items-center justify-center">
                                         <span className="text-black/20 text-sm">Video 3</span>
                                     </div>

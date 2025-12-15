@@ -5,6 +5,7 @@ import { ppAgrandirHeading, sfProDisplay } from '@/app/fonts'
 import { SignOutButton } from '@/components/sign-out-button'
 import { ProfileForm } from '@/components/profile-form'
 import Link from 'next/link'
+import { LinkedAccountsSectionWrapper } from '@/components/linked-accounts-section-wrapper'
 
 export default async function ProfilePage() {
     const supabase = await createClient()
@@ -47,6 +48,14 @@ export default async function ProfilePage() {
                         Profile
                     </h2>
                     <ProfileForm user={user} userDetails={userDetails} />
+                </div>
+
+                {/* Linked Banks */}
+                <div className="mb-8">
+                    <h2 className={`${ppAgrandirHeading.className} text-xl font-bold text-black mb-4`}>
+                        Linked Banks
+                    </h2>
+                    <LinkedAccountsSectionWrapper />
                 </div>
 
                 {/* Plan */}

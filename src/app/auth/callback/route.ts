@@ -6,7 +6,7 @@ import { SUPABASE_URL, SUPABASE_ANON_KEY } from '@/lib/env'
 export async function GET(request: Request) {
     const { searchParams, origin } = new URL(request.url)
     const code = searchParams.get('code')
-    const next = searchParams.get('next') ?? '/dashboard'
+    const next = searchParams.get('next') ?? '/onboarding'
 
     if (code) {
         const cookieStore = await cookies()

@@ -2,11 +2,12 @@
 
 import { useState, useTransition } from 'react'
 import { ppAgrandirHeading, sfProDisplay } from '@/app/fonts'
-import { Plus, Trash2, Calendar, Mail, ChevronRight } from 'lucide-react'
+import { Plus, Trash2, Calendar, ChevronRight } from 'lucide-react'
 import { AddSubscriptionModal } from './add-subscription-modal'
 import { Database } from '@/types'
 import { deleteSubscription } from '@/app/actions/subscriptions'
 import Link from 'next/link'
+import { ConnectBankCard } from './connect-bank-card'
 
 type TrackedSubscription = Database['public']['Tables']['tracked_subscriptions']['Row']
 
@@ -69,23 +70,7 @@ export function DashboardView({ userName, subscriptions }: DashboardViewProps) {
 
                 {/* Quick Actions */}
                 <div className="grid md:grid-cols-2 gap-4 mb-12">
-                    <button
-                        disabled
-                        className="bg-white rounded-2xl p-6 border border-black/5 text-left opacity-60 cursor-not-allowed"
-                    >
-                        <div className="flex items-center justify-between mb-4">
-                            <div className="w-10 h-10 bg-black/5 rounded-xl flex items-center justify-center">
-                                <Mail className="w-5 h-5 text-black/40" />
-                            </div>
-                            <span className="text-xs text-black/30 font-medium">Coming soon</span>
-                        </div>
-                        <h3 className={`${ppAgrandirHeading.className} text-lg font-bold text-black mb-1`}>
-                            Connect Gmail
-                        </h3>
-                        <p className="text-black/50 text-sm">
-                            Auto-detect subscriptions from receipts
-                        </p>
-                    </button>
+                    <ConnectBankCard />
 
                     <button
                         onClick={() => setIsAddModalOpen(true)}

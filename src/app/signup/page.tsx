@@ -49,11 +49,12 @@ export default function SignupPage() {
                 <div className="w-full max-w-sm">
                     {/* Header */}
                     <div className="text-center mb-10">
+                        <p className="text-black/40 text-sm mb-3">Step 1 of 4</p>
                         <h1 className={`${ppAgrandirHeading.className} text-3xl md:text-4xl font-bold text-black mb-3`}>
-                            Get your money back.
+                            Create your account
                         </h1>
                         <p className="text-black/50 text-sm">
-                            Find hidden subscriptions. Cancel what you don't use.
+                            Save your scan & recovery plan.
                         </p>
                     </div>
 

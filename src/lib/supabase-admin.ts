@@ -12,3 +12,8 @@ export const supabaseAdmin = createClient<any>(SUPABASE_URL, SUPABASE_SERVICE_RO
         persistSession: false,
     },
 });
+
+// Function to create admin client (for consistency with server client pattern)
+export function createAdminClient() {
+    return supabaseAdmin;
+}

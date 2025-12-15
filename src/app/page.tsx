@@ -126,14 +126,14 @@ export default function Home() {
 
               <BlurFade delay={0.5} duration={0.8} className="w-full">
                 <div className="flex flex-col w-full max-w-md gap-4 items-center">
-                  <Link href="/login" className="w-full">
-                    <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
-                      Find My Money
+                  <Link href="/signup" className="w-full">
+                    <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-14 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
+                      Scan My Accounts
                     </Button>
                   </Link>
-                  <Link href="/how-it-works" className="text-black/50 hover:text-black transition-colors text-sm">
-                    How does it work? →
-                  </Link>
+                  <p className="text-black/40 text-sm">
+                    Read-only • No transfers • Takes 60 seconds
+                  </p>
                 </div>
               </BlurFade>
             </div>
@@ -177,31 +177,123 @@ export default function Home() {
 
         {/* How it works */}
         <section className="py-20 px-6 bg-white border-y border-black/10">
-          <div className="max-w-4xl mx-auto">
-            <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-12`}>
-              Three steps. Zero effort.
-            </h2>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className={`${ppAgrandirHeading.className} text-3xl md:text-5xl font-bold text-black mb-4`}>
+                Three steps. Zero effort.
+              </h2>
+              <p className="text-lg text-black/60 max-w-xl mx-auto">
+                Connect your accounts. Sit back. We find the money companies owe you.
+              </p>
+            </div>
 
-            <div className="space-y-12">
-              {[
-                { num: "01", title: "Connect your accounts", desc: "Securely link your bank through Plaid. Read-only access—we can never move your money." },
-                { num: "02", title: "We scan everything", desc: "Our AI analyzes your transactions to find refunds, forgotten charges, and settlements." },
-                { num: "03", title: "Recover in one click", desc: "For each opportunity, tap to recover. We handle the dispute for you." },
-              ].map((step, index) => (
-                <div key={index} className="flex gap-8 items-start">
-                  <span className={`${ppAgrandirHeading.className} text-5xl md:text-6xl font-bold text-black/10 flex-shrink-0`}>
-                    {step.num}
-                  </span>
-                  <div className="pt-2">
-                    <h3 className={`${ppAgrandirHeading.className} text-xl font-bold text-black mb-2`}>
-                      {step.title}
-                    </h3>
-                    <p className="text-black/60 leading-relaxed">
-                      {step.desc}
-                    </p>
+            <div className="space-y-0">
+              {/* Step 1 */}
+              <div className="relative">
+                <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12 py-12 border-t border-black/10">
+                  <div className="flex flex-col md:flex-row items-start gap-6 flex-1">
+                    <div className="flex-shrink-0">
+                      <span className={`${ppAgrandirHeading.className} text-7xl md:text-8xl font-bold text-black/5`}>
+                        01
+                      </span>
+                    </div>
+                    <div className="flex-1 md:pt-2">
+                      <h3 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
+                        Connect your bank
+                      </h3>
+                      <p className="text-black/60 text-lg leading-relaxed mb-4">
+                        Securely link your accounts through Plaid. We use the same bank-level encryption that Venmo, Chime, and 12,000+ financial institutions trust.
+                      </p>
+                      <Link
+                        href="https://plaid.com"
+                        target="_blank"
+                        className="inline-flex items-center gap-3 pl-3 pr-5 py-2 bg-black/[0.03] rounded-full hover:bg-black/[0.06] transition-colors"
+                      >
+                        <img src="/Plaid.svg" alt="Plaid" className="h-10" />
+                        <span className="text-sm text-black/50">Secured by Plaid</span>
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-96 flex-shrink-0">
+                    <div className="aspect-square bg-black/5 rounded-2xl overflow-hidden">
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                      >
+                        <source src="https://res.cloudinary.com/do3c8fqwu/video/upload/v1765758895/Area_epsuug.mp4" type="video/mp4" />
+                      </video>
+                    </div>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative">
+                <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12 py-12 border-t border-black/10">
+                  <div className="flex flex-col md:flex-row items-start gap-6 flex-1">
+                    <div className="flex-shrink-0">
+                      <span className={`${ppAgrandirHeading.className} text-7xl md:text-8xl font-bold text-black/5`}>
+                        02
+                      </span>
+                    </div>
+                    <div className="flex-1 md:pt-2">
+                      <h3 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
+                        We scan everything
+                      </h3>
+                      <p className="text-black/60 text-lg leading-relaxed mb-4">
+                        Our AI analyzes your transaction history to find hidden refunds, forgotten subscriptions, and class action settlements.
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/60">Refunds</span>
+                        <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/60">Subscriptions</span>
+                        <span className="px-3 py-1.5 bg-black/5 rounded-full text-sm text-black/60">Settlements</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-96 flex-shrink-0">
+                    <div className="aspect-square bg-black/5 rounded-2xl overflow-hidden">
+                      <img
+                        src="https://res.cloudinary.com/do3c8fqwu/image/upload/v1765815389/Video2_rqupsi.png"
+                        alt="Scan visualization"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative">
+                <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12 py-12 border-t border-black/10">
+                  <div className="flex flex-col md:flex-row items-start gap-6 flex-1">
+                    <div className="flex-shrink-0">
+                      <span className={`${ppAgrandirHeading.className} text-7xl md:text-8xl font-bold text-black/5`}>
+                        03
+                      </span>
+                    </div>
+                    <div className="flex-1 md:pt-2">
+                      <h3 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
+                        Recover in one click
+                      </h3>
+                      <p className="text-black/60 text-lg leading-relaxed mb-4">
+                        Cancel subscriptions, request refunds, file claims. Just tap and we handle the rest. Money goes directly to your bank.
+                      </p>
+                      <div className="flex items-center gap-2 text-sm text-black/40">
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>No paperwork • No hassle</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full lg:w-96 flex-shrink-0">
+                    <div className="aspect-square bg-black/5 rounded-2xl flex items-center justify-center">
+                      <span className="text-black/20 text-sm">Video 3</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -252,14 +344,14 @@ export default function Home() {
         <section className="py-20 px-6">
           <div className="max-w-2xl mx-auto text-center border-t border-black/10 pt-20">
             <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
-              Ready to find your money?
+              Ready to find your leaks?
             </h2>
             <p className="text-black/60 mb-8">
-              Free to scan. Takes 30 seconds.
+              Free scan. See exactly what you're losing.
             </p>
-            <Link href="/login">
-              <Button size="lg" className={`${ppAgrandirHeading.className} h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
-                Find My Money
+            <Link href="/signup">
+              <Button size="lg" className={`${ppAgrandirHeading.className} h-14 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
+                Scan My Accounts
               </Button>
             </Link>
             <p className="text-black/40 text-sm mt-4">
