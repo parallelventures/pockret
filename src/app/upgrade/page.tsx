@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { ppAgrandirHeading, sfProDisplay } from '@/app/fonts';
+import { createCheckoutSession } from '@/app/actions/stripe';
+import { STRIPE_PRICES } from '@/lib/stripe-config';
 import {
     Zap,
     FileText,
@@ -102,6 +104,7 @@ export default function UpgradePage() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [timeLeft, setTimeLeft] = useState({ minutes: 9, seconds: 59 });
     const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+    const [isPending, startTransition] = useTransition();
 
     useEffect(() => {
         setTimeout(() => setIsLoaded(true), 100);
@@ -145,9 +148,15 @@ export default function UpgradePage() {
     const currentRecovery = recoveryBreakdown[selectedPlan as keyof typeof recoveryBreakdown];
 
     const handlePurchase = () => {
-        // Navigate to Stripe checkout or handle payment
-        // For now, redirect to dashboard
-        router.push('/dashboard');
+        const plan = STRIPE_PRICES[selectedPlan as keyof typeof STRIPE_PRICES];
+
+        startTransition(async () => {
+            try {
+                await createCheckoutSession(plan.priceId, plan.mode);
+            } catch (error) {
+                console.error('Checkout error:', error);
+            }
+        });
     };
 
     return (
@@ -164,12 +173,11 @@ export default function UpgradePage() {
 
                 {/* Header */}
                 <div className={`text-center mb-6 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                    <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <Sparkles className="w-8 h-8 text-white" />
-                    </div>
-                    <h1 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-2`}>
-                        Unlock your Recovery Engine
-                    </h1>
+                    <img
+                        src="/header.png"
+                        alt="Recovery"
+                        className="w-full max-w-md mx-auto mb-4 rounded-2xl"
+                    />
                     <p className="text-black/50">
                         {currentRecovery.label}
                     </p>
@@ -310,16 +318,28 @@ export default function UpgradePage() {
                 <div className={`transition-all duration-500 delay-250 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                     <button
                         onClick={handlePurchase}
+                        disabled={isPending}
                         className={`
                             ${ppAgrandirHeading.className}
                             w-full py-4 rounded-xl bg-black text-white font-bold
                             flex items-center justify-center gap-2
                             hover:bg-black/90 transition-colors cursor-pointer
+                            disabled:opacity-70 disabled:cursor-not-allowed
                         `}
                     >
-                        <span>
-                            Get {selectedPlan === 'lifetime' ? 'Lifetime Access' : 'Monthly Access'} — ${plans.find(p => p.id === selectedPlan)?.price}
-                        </span>
+                        {isPending ? (
+                            <span className="flex items-center gap-2">
+                                <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                Redirecting to checkout...
+                            </span>
+                        ) : (
+                            <span>
+                                Get {selectedPlan === 'lifetime' ? 'Lifetime Access' : 'Monthly Access'} — ${plans.find(p => p.id === selectedPlan)?.price}
+                            </span>
+                        )}
                     </button>
                 </div>
 

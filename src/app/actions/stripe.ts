@@ -6,7 +6,7 @@ import { supabaseAdmin } from '@/lib/supabase-admin';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export async function createCheckoutSession(priceId: string) {
+export async function createCheckoutSession(priceId: string, mode?: 'subscription' | 'payment') {
     const supabase = await createClient();
     const {
         data: { user },
@@ -41,7 +41,10 @@ export async function createCheckoutSession(priceId: string) {
     }
 
     // 2. Create Checkout Session
-    const origin = (await headers()).get('origin') || 'http://localhost:3000'; // Fallback for local dev
+    const origin = (await headers()).get('origin') || 'http://localhost:3000';
+
+    // Determine mode: 'subscription' for monthly, 'payment' for lifetime
+    const checkoutMode = mode || 'subscription';
 
     const session = await stripe.checkout.sessions.create({
         customer: customerId,
@@ -51,12 +54,15 @@ export async function createCheckoutSession(priceId: string) {
                 quantity: 1,
             },
         ],
-        mode: 'subscription',
-        success_url: `${origin}/dashboard?success=true`,
-        cancel_url: `${origin}/dashboard?canceled=true`,
+        mode: checkoutMode,
+        success_url: `${origin}/dashboard?success=true&plan=${checkoutMode === 'payment' ? 'lifetime' : 'monthly'}`,
+        cancel_url: `${origin}/upgrade?canceled=true`,
         client_reference_id: user.id,
         allow_promotion_codes: true,
         billing_address_collection: 'auto',
+        metadata: {
+            plan_type: checkoutMode === 'payment' ? 'lifetime' : 'monthly',
+        },
     });
 
     if (!session.url) {
