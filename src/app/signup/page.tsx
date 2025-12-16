@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase'
+import { SITE_URL } from '@/lib/env'
 import { Navbar } from '@/components/navbar'
 import Link from 'next/link'
 import { ppAgrandirHeading, sfProDisplay } from '../fonts'
@@ -20,7 +21,7 @@ export default function SignupPage() {
         const { error } = await supabase.auth.signInWithOtp({
             email,
             options: {
-                emailRedirectTo: `${window.location.origin}/auth/callback`,
+                emailRedirectTo: `${SITE_URL}/auth/callback`,
             },
         })
 
@@ -36,7 +37,7 @@ export default function SignupPage() {
         const { error } = await supabase.auth.signInWithOAuth({
             provider,
             options: {
-                redirectTo: `${window.location.origin}/auth/callback`,
+                redirectTo: `${SITE_URL}/auth/callback`,
             },
         })
         if (error) setMessage(error.message)
