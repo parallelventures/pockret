@@ -64,14 +64,8 @@ export function Footer() {
                         <Link href="/learn/subscription-trap" className="text-black/60 hover:text-black transition-colors text-sm">
                             Subscription Trap
                         </Link>
-                        <Link href="/learn/is-it-safe" className="text-black/60 hover:text-black transition-colors text-sm">
-                            Is It Safe?
-                        </Link>
                         <Link href="/learn/diy-vs-pockret" className="text-black/60 hover:text-black transition-colors text-sm">
                             DIY vs Automation
-                        </Link>
-                        <Link href="/learn/what-if-no-results" className="text-black/60 hover:text-black transition-colors text-sm">
-                            No Results?
                         </Link>
                         <Link href="/consumer-rights" className="text-black/60 hover:text-black transition-colors text-sm">
                             Consumer Rights

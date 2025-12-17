@@ -3,7 +3,7 @@
 import { createClient } from '@/lib/supabase-server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabase-admin';
-import { headers } from 'next/headers';
+import { SITE_URL } from '@/lib/env';
 import { redirect } from 'next/navigation';
 
 export async function createCheckoutSession(priceId: string, mode?: 'subscription' | 'payment') {
@@ -40,9 +40,6 @@ export async function createCheckoutSession(priceId: string, mode?: 'subscriptio
             .eq('id', user.id);
     }
 
-    // 2. Create Checkout Session
-    const origin = (await headers()).get('origin') || 'http://localhost:3000';
-
     // Determine mode: 'subscription' for monthly, 'payment' for lifetime
     const checkoutMode = mode || 'subscription';
 
@@ -55,8 +52,8 @@ export async function createCheckoutSession(priceId: string, mode?: 'subscriptio
             },
         ],
         mode: checkoutMode,
-        success_url: `${origin}/dashboard?success=true&plan=${checkoutMode === 'payment' ? 'lifetime' : 'monthly'}`,
-        cancel_url: `${origin}/upgrade?canceled=true`,
+        success_url: `${SITE_URL}/dashboard?success=true&plan=${checkoutMode === 'payment' ? 'lifetime' : 'monthly'}`,
+        cancel_url: `${SITE_URL}/upgrade?canceled=true`,
         client_reference_id: user.id,
         allow_promotion_codes: true,
         billing_address_collection: 'auto',
@@ -92,11 +89,9 @@ export async function createCustomerPortalSession() {
         throw new Error('No Stripe customer found');
     }
 
-    const origin = (await headers()).get('origin') || 'http://localhost:3000';
-
     const session = await stripe.billingPortal.sessions.create({
         customer: userData.stripe_customer_id,
-        return_url: `${origin}/dashboard`,
+        return_url: `${SITE_URL}/dashboard`,
     });
 
     redirect(session.url);
