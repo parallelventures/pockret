@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background-color: #F9FAFB;
+            min-height: 200vh;
+            /* Pour tester le scroll */
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            /* Noir translucide */
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 80px;
+            /* Plus de hauteur */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Contenu de demo */
+        .demo-content {
+            padding: 100px 24px;
+            text-align: center;
+        }
+
+        .demo-content h1 {
+            font-size: 32px;
+            color: #000;
+            margin-bottom: 16px;
+        }
+
+        .demo-content p {
+            color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="navbar-container">
+            <!-- Vide - pas de contenu -->
+        </div>
+    </header>
+
+    <!-- Demo content -->
+    <main class="demo-content">
+        <h1>Scroll pour tester le blur</h1>
+        <p>La navbar reste en haut avec l'effet de flou glassmorphism</p>
+    </main>
+
+    <script>
+        // Hide/Show navbar on scroll
+        const navbar = document.getElementById('navbar');
+        let lastScrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY < 50) {
+                navbar.classList.remove('hidden');
+            } else if (currentScrollY > lastScrollY) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+    </script>
+</body>
+
+</html>

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ppAgrandirHeading, sfProDisplay } from '@/app/fonts';
 import { createCheckoutSession } from '@/app/actions/stripe';
 import { STRIPE_PRICES } from '@/lib/stripe-config';
+import { PaymentButtonWrapper } from '@/components/payment-button-wrapper';
 import {
     Zap,
     FileText,
@@ -57,32 +58,12 @@ const faqItems = [
         answer: "It depends on your situation — but on average, users identify $200–$600 per year in forgotten subscriptions, overcharges, and refundable items. Some find $30, others find over $1,000. The first scan is free — you'll know your potential recovery before paying anything."
     },
     {
-        question: "Why would I pay to find refunds?",
-        answer: "Because it literally pays for itself. One subscription canceled or refund claimed usually covers the cost — sometimes 5× over. You're not paying for another tool. You're paying to stop losing money. Spend $39, recover $200+. Guaranteed insights."
-    },
-    {
         question: "What if I don't want to cancel all my subscriptions?",
         answer: "Perfect — Pockret isn't anti-subscription. It's anti-waste. We highlight what's unused or overpriced — you choose what to keep. The goal is control, not austerity."
     },
     {
-        question: "How is Pockret different from a budgeting app?",
-        answer: "Budgeting apps track what you spend. Pockret finds what's leaking. You don't need another dashboard — you need results. We're a Recovery Engine, not a tracker."
-    },
-    {
-        question: "Do I get actual refunds, or just info?",
-        answer: "Both. Pockret generates ready-to-send refund requests, connects you to merchants or banking portals, and in some cases pre-fills forms automatically (depending on the provider). The hard part is done for you — you just approve the action."
-    },
-    {
-        question: "Can I get refunds for my subscriptions?",
-        answer: "Yes — and Pockret helps you do it faster and smarter. For App Store purchases, we link you directly to Apple's refund page. For web subscriptions, we generate professional refund request templates. For bank charges, we prepare chargeback details under Fair Credit Billing Act protection."
-    },
-    {
-        question: "What's the catch?",
-        answer: "None. We don't sell data. We don't do ads. Our only incentive is to make you recover as much money as possible — that's how we keep you subscribed. Aligned incentives = trust that scales."
-    },
-    {
-        question: "How long does the scan take?",
-        answer: "About 60 seconds. You connect your account → we analyze → results appear instantly. No setup, no learning curve. If you scan today, you'll still catch this month's renewals before they charge again."
+        question: "Do I get actual refunds, or just information?",
+        answer: "Both. Pockret generates ready-to-send refund requests, connects you to merchants or banking portals, and in some cases pre-fills forms automatically. For App Store purchases, we link directly to Apple's refund page. The hard part is done for you — you just approve the action."
     },
     {
         question: "Is there a refund guarantee?",
@@ -91,10 +72,6 @@ const faqItems = [
     {
         question: "Can I get a refund for my Pockret subscription?",
         answer: "Yes. If you believe Pockret didn't deliver measurable value — no hidden conditions. Email support@pockret.com within 14 days of purchase, and we'll issue a 100% refund, no questions asked. If you don't win, we don't want to keep your money."
-    },
-    {
-        question: "What about privacy and data sharing?",
-        answer: "Your data stays encrypted and isolated per user. We use no trackers, no third-party analytics on sensitive data. We can't sell or share anything — it's locked behind Plaid's security layer. Privacy is part of the product, not an afterthought."
     },
 ];
 
@@ -105,6 +82,8 @@ export default function UpgradePage() {
     const [timeLeft, setTimeLeft] = useState({ minutes: 9, seconds: 59 });
     const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
     const [isPending, startTransition] = useTransition();
+    const [showApplePay, setShowApplePay] = useState(true);
+    const [applePayChecked, setApplePayChecked] = useState(false);
 
     useEffect(() => {
         setTimeout(() => setIsLoaded(true), 100);
@@ -158,6 +137,20 @@ export default function UpgradePage() {
             }
         });
     };
+
+    const handlePaymentSuccess = () => {
+        router.push('/dashboard?success=true&plan=' + selectedPlan);
+    };
+
+    const handleApplePayNotAvailable = () => {
+        // Apple Pay not available, use checkout fallback
+        setShowApplePay(false);
+        setApplePayChecked(true);
+    };
+
+    // Get current plan details
+    const currentPlan = plans.find(p => p.id === selectedPlan);
+    const currentPlanAmount = (currentPlan?.price || 0) * 100; // Convert to cents
 
     return (
         <div className={`${sfProDisplay.className} min-h-screen bg-[#FAFAFA]`}>
@@ -316,6 +309,21 @@ export default function UpgradePage() {
 
                 {/* Purchase Button */}
                 <div className={`transition-all duration-500 delay-250 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                    {/* Apple Pay / Google Pay - Priority */}
+                    {selectedPlan === 'lifetime' && showApplePay && (
+                        <div className="mb-3">
+                            <PaymentButtonWrapper
+                                planType={selectedPlan as 'monthly' | 'lifetime'}
+                                amount={currentPlanAmount}
+                                label={`Pockret ${currentPlan?.name || 'Lifetime'}`}
+                                onSuccess={handlePaymentSuccess}
+                                onFallback={handleApplePayNotAvailable}
+                                showApplePay={showApplePay}
+                            />
+                        </div>
+                    )}
+
+                    {/* Fallback / Regular checkout button */}
                     <button
                         onClick={handlePurchase}
                         disabled={isPending}
@@ -337,7 +345,10 @@ export default function UpgradePage() {
                             </span>
                         ) : (
                             <span>
-                                Get {selectedPlan === 'lifetime' ? 'Lifetime Access' : 'Monthly Access'} — ${plans.find(p => p.id === selectedPlan)?.price}
+                                {selectedPlan === 'lifetime' && showApplePay
+                                    ? 'Or pay with card'
+                                    : `Get ${selectedPlan === 'lifetime' ? 'Lifetime Access' : 'Monthly Access'} — $${plans.find(p => p.id === selectedPlan)?.price}`
+                                }
                             </span>
                         )}
                     </button>

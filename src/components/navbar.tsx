@@ -41,11 +41,7 @@ export function Navbar() {
 
     return (
         <header
-            className={`sticky top-0 z-50 w-full bg-[#F9FAFB]/70 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
-            style={{
-                backdropFilter: 'blur(24px) saturate(180%)',
-                WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-            }}
+            className={`sticky top-0 z-50 w-full transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
         >
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">

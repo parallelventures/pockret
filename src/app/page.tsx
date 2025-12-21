@@ -1,142 +1,219 @@
 'use client'
 
 import Link from "next/link";
-import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { ArrowRight, CheckCircle2, Search, ShieldCheck, Clock, DollarSign, Globe, BarChart3, Zap } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { ppAgrandirHeading } from "./fonts";
-import { TotalRecoveredCard } from "@/components/total-recovered-card";
-import { BlurFade, StaggerContainer, fadeInUpVariant } from "@/components/ui/animations";
-import { motion } from "framer-motion";
-import { Skeleton } from "@/components/ui/skeleton";
+import { BlurFade } from "@/components/ui/animations";
+import { StaticRadialGradient } from '@paper-design/shaders-react';
+import { DraggableIcon } from "@/components/draggable-icon";
 
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Force muted for Safari autoplay
-    video.muted = true;
-    video.defaultMuted = true;
-
-    // Try to play immediately and on canplay
-    const playVideo = () => {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Retry after a short delay (Safari sometimes needs this)
-          setTimeout(() => {
-            video.play().catch(() => { });
-          }, 100);
-        });
-      }
-    };
-
-    // Play on mount
-    playVideo();
-
-    // Also play when video is ready
-    video.addEventListener('canplay', playVideo);
-
-    const handleTimeUpdate = () => {
-      if (video.duration && video.currentTime >= video.duration - 0.1) {
-        video.currentTime = 0;
-        video.play();
-      }
-    };
-
-    const handleEnded = () => {
-      video.currentTime = 0;
-      video.play();
-    };
-
-    // Check if video is already ready
-    if (video.readyState >= 3) {
-      setIsVideoLoaded(true);
-    }
-
-    const handleLoadedData = () => {
-      setIsVideoLoaded(true);
-    };
-
-    video.addEventListener('loadeddata', handleLoadedData);
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    video.addEventListener('ended', handleEnded);
-
-    return () => {
-      video.removeEventListener('canplay', playVideo);
-      video.removeEventListener('loadeddata', handleLoadedData);
-      video.removeEventListener('timeupdate', handleTimeUpdate);
-      video.removeEventListener('ended', handleEnded);
-    };
-  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F9FAFB]">
+    <div className="min-h-screen flex flex-col bg-[#F9FAFB] relative">
+      {/* Background Gradient - covers navbar and hero */}
+      <div className="absolute top-0 left-0 right-0 h-[800px] md:h-[900px] z-0 overflow-hidden">
+        <StaticRadialGradient
+          scale={3.59}
+          offsetX={0}
+          offsetY={0.48}
+          radius={3}
+          focalDistance={1.12}
+          focalAngle={0}
+          falloff={0.25}
+          mixing={0.38}
+          distortionShift={-0.89}
+          distortionFreq={0}
+          distortion={0.79}
+          colors={['#00BBFF', '#78E9FF', '#FFFFFF']}
+          colorBack="#00000000"
+          style={{ width: '100%', height: '100%' }}
+        />
+        {/* Fade overlay at bottom */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, transparent, #F9FAFB)' }}
+        />
+      </div>
+
       <Navbar />
 
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col relative z-10">
         {/* Hero Section */}
         <section className="relative pt-20 pb-32 md:pt-32 md:pb-48 px-6 overflow-hidden">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-center">
 
-            {/* Left: Visual (Mobile: Order 1, Desktop: Order 1) */}
-            <div className="relative z-10 flex justify-center md:justify-end">
-              <div className="relative w-full max-w-2xl rounded-3xl overflow-hidden aspect-[1920/1536] bg-gray-100">
-                {!isVideoLoaded && (
-                  <Skeleton className="absolute inset-0 w-full h-full z-20 rounded-3xl" />
-                )}
-                <video
-                  ref={videoRef}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className={`w-full h-full object-cover rounded-3xl transition-opacity duration-700 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  onLoadedData={() => setIsVideoLoaded(true)}
-                  // @ts-ignore - Safari specific attributes
-                  webkit-playsinline="true"
-                  x5-playsinline="true"
-                >
-                  <source src="https://res.cloudinary.com/do3c8fqwu/video/upload/v1765505154/989_1440x60_shots_so_1_o24bgw.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </div>
+          {/* Floating Icons - Mobile */}
+          <div className="absolute inset-0 pointer-events-none md:hidden">
+            <DraggableIcon
+              src="/icons/netflix.png"
+              className="absolute top-[5%] left-[5%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.3}
+            />
+            <DraggableIcon
+              src="/icons/spotify.png"
+              className="absolute top-[8%] right-[8%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.35}
+            />
+            <DraggableIcon
+              src="/icons/discord.png"
+              className="absolute top-[18%] left-[2%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.4}
+            />
+            <DraggableIcon
+              src="/icons/duolingo.png"
+              className="absolute top-[22%] right-[3%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.45}
+            />
+            <DraggableIcon
+              src="/icons/strava.png"
+              className="absolute top-[70%] left-[3%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.5}
+            />
+            <DraggableIcon
+              src="/icons/chatgpt.png"
+              className="absolute top-[72%] right-[5%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.55}
+            />
+            <DraggableIcon
+              src="/icons/canva.png"
+              className="absolute top-[80%] left-[8%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.6}
+            />
+            <DraggableIcon
+              src="/icons/primevideo.png"
+              className="absolute top-[82%] right-[10%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.65}
+            />
+            <DraggableIcon
+              src="/icons/revolut.png"
+              className="absolute top-[88%] left-[20%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.7}
+            />
+            <DraggableIcon
+              src="/icons/tinder.png"
+              className="absolute top-[90%] right-[22%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.75}
+            />
+            <DraggableIcon
+              src="/icons/chess.png"
+              className="absolute top-[92%] left-[45%] w-10 h-10 pointer-events-auto "
+              
+              appearDelay={0.8}
+            />
+          </div>
 
-            {/* Right: Content (Mobile: Order 2, Desktop: Order 2) */}
-            <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-8">
+          {/* Floating Icons - Desktop */}
+          <div className="absolute inset-0 pointer-events-none hidden md:block">
+            {/* Left side icons */}
+            <DraggableIcon
+              src="/icons/netflix.png"
+              className="absolute top-[15%] left-[8%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={0.3}
+            />
+            <DraggableIcon
+              src="/icons/spotify.png"
+              className="absolute top-[35%] left-[5%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={0.5}
+            />
+            <DraggableIcon
+              src="/icons/discord.png"
+              className="absolute top-[55%] left-[10%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={0.7}
+            />
+            <DraggableIcon
+              src="/icons/duolingo.png"
+              className="absolute top-[75%] left-[6%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={0.9}
+            />
+            <DraggableIcon
+              src="/icons/strava.png"
+              className="absolute top-[25%] left-[18%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={1.1}
+            />
 
-              <BlurFade delay={0.1} duration={0.8}>
-                <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[0.9] tracking-tight`}>
-                  Recover the money companies owe you, instantly.
-                </h1>
-              </BlurFade>
+            {/* Right side icons */}
+            <DraggableIcon
+              src="/icons/chatgpt.png"
+              className="absolute top-[12%] right-[10%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={0.4}
+            />
+            <DraggableIcon
+              src="/icons/canva.png"
+              className="absolute top-[32%] right-[6%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={0.6}
+            />
+            <DraggableIcon
+              src="/icons/primevideo.png"
+              className="absolute top-[52%] right-[12%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={0.8}
+            />
+            <DraggableIcon
+              src="/icons/revolut.png"
+              className="absolute top-[70%] right-[7%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={1.0}
+            />
+            <DraggableIcon
+              src="/icons/tinder.png"
+              className="absolute top-[20%] right-[20%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={1.2}
+            />
+            <DraggableIcon
+              src="/icons/chess.png"
+              className="absolute top-[85%] right-[15%] w-20 h-20 pointer-events-auto "
+              
+              appearDelay={1.4}
+            />
+          </div>
 
-              <BlurFade delay={0.3} duration={0.8}>
-                <p className="text-lg text-text-muted max-w-md leading-relaxed">
-                  You connect your accounts, we uncover every dollar companies owe you.
+          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center space-y-8">
+
+            <BlurFade delay={0.1} duration={0.8}>
+              <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-[0.9] tracking-tight`}>
+                Recover the money companies owe you, instantly.
+              </h1>
+            </BlurFade>
+
+            <BlurFade delay={0.3} duration={0.8}>
+              <p className="text-lg text-black/60 max-w-md leading-relaxed">
+                You connect your accounts, we uncover every dollar companies owe you.
+              </p>
+            </BlurFade>
+
+            <BlurFade delay={0.5} duration={0.8}>
+              <div className="flex flex-col w-full max-w-md gap-4 items-center">
+                <Link href="/signup" className="w-full">
+                  <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] hover:scale-95 text-white font-bold text-base transition-all active:scale-90 border-0`}>
+                    Scan My Accounts
+                  </Button>
+                </Link>
+                <p className="text-black/40 text-sm">
+                  Read-only • No transfers • Takes 60 seconds
                 </p>
-              </BlurFade>
-
-              <BlurFade delay={0.5} duration={0.8} className="w-full">
-                <div className="flex flex-col w-full max-w-md gap-4 items-center">
-                  <Link href="/signup" className="w-full">
-                    <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-14 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
-                      Scan My Accounts
-                    </Button>
-                  </Link>
-                  <p className="text-black/40 text-sm">
-                    Read-only • No transfers • Takes 60 seconds
-                  </p>
-                </div>
-              </BlurFade>
-            </div>
+              </div>
+            </BlurFade>
           </div>
         </section>
 
@@ -350,7 +427,7 @@ export default function Home() {
               Free scan. See exactly what you're losing.
             </p>
             <Link href="/signup">
-              <Button size="lg" className={`${ppAgrandirHeading.className} h-14 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
+              <Button size="lg" className={`${ppAgrandirHeading.className} h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
                 Scan My Accounts
               </Button>
             </Link>
@@ -362,6 +439,6 @@ export default function Home() {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 }
