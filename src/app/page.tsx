@@ -11,32 +11,19 @@ import { FAQ } from "@/components/faq";
 import { StaticRadialGradient } from '@paper-design/shaders-react';
 import { IconArc } from "@/components/icon-arc";
 import { HowItWorksCarousel } from "@/components/how-it-works-carousel";
+import { AppIconsMarquee } from "@/components/app-icons-marquee";
 
 export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F9FAFB] relative">
-      {/* Background Gradient - covers navbar and hero */}
-      <div className="absolute top-0 left-0 right-0 h-[800px] md:h-[900px] z-0 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(66.29% 80.51% at 50% 100%, #7B61FF 0%, #4F7CFF 10.08%, #12BFFF 22.84%, #00E0C6 36.69%, #A6FF4D 50.73%, #FBC54A 71.44%, #FF4FD8 93.29%)',
-            opacity: 0.4
-          }}
-        />
-        {/* Fade overlay at bottom */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
-          style={{ background: 'linear-gradient(to bottom, transparent, #F9FAFB)' }}
-        />
-      </div>
+
 
       <Navbar />
 
       <main className="flex-1 flex flex-col relative z-10">
         {/* Hero Section */}
-        <section className="relative pt-20 pb-32 md:pt-32 md:pb-48 px-6 overflow-hidden">
+        <section className="relative pt-12 pb-20 md:pt-32 md:pb-48 px-4 md:px-6 overflow-hidden">
 
           {/* Icon Arc - temporarily disabled
           <IconArc
@@ -60,13 +47,13 @@ export default function Home() {
           <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center space-y-8">
 
             <BlurFade delay={0.1} duration={0.8}>
-              <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-[0.9] tracking-tight`}>
+              <h1 className={`${ppAgrandirHeading.className} text-3xl md:text-5xl lg:text-6xl font-extrabold text-black leading-[0.95] tracking-tight`}>
                 Recover the money companies owe you, instantly.
               </h1>
             </BlurFade>
 
             <BlurFade delay={0.3} duration={0.8}>
-              <p className="text-lg text-black/60 max-w-md leading-relaxed">
+              <p className="text-base md:text-lg text-black/60 max-w-md leading-relaxed">
                 You connect your accounts, we uncover every dollar companies owe you.
               </p>
             </BlurFade>
@@ -74,7 +61,7 @@ export default function Home() {
             <BlurFade delay={0.5} duration={0.8}>
               <div className="flex flex-col w-full max-w-md gap-4 items-center">
                 <Link href="/signup" className="w-full">
-                  <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] hover:scale-95 text-white font-bold text-base transition-all active:scale-90 border-0`}>
+                  <Button size="lg" className={`${ppAgrandirHeading.className} w-full h-12 px-8 rounded-xl bg-[#0F172A] hover:bg-[#020617] hover:scale-[0.98] text-white font-bold text-base transition-all active:scale-95 border-0`}>
                     Scan My Accounts
                   </Button>
                 </Link>
@@ -84,11 +71,32 @@ export default function Home() {
               </div>
             </BlurFade>
           </div>
+
+          {/* App icons marquee */}
+          <BlurFade delay={0.7} duration={0.8} className="w-full mt-20">
+            <AppIconsMarquee
+              icons={[
+                '/icons/netflix.png',
+                '/icons/spotify.png',
+                '/icons/discord.png',
+                '/icons/duolingo.png',
+                '/icons/disneyplus.png',
+                '/icons/chatgpt.png',
+                '/icons/canva.png',
+                '/icons/primevideo.png',
+                '/icons/strava.png',
+                '/icons/revolut.png',
+                '/icons/tinder.png',
+                '/icons/chess.png'
+              ]}
+              speed={50}
+            />
+          </BlurFade>
         </section>
 
         {/* What we find */}
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto border-t border-black/10 pt-20">
+        <section className="py-12 md:py-20 px-4 md:px-6">
+          <div className="max-w-4xl mx-auto border-t border-black/10 pt-12 md:pt-20">
             <SlideUp duration={0.7}>
               <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
                 Money you didn't know you were losing.
@@ -98,7 +106,7 @@ export default function Home() {
               </p>
             </SlideUp>
 
-            <RevealList className="grid md:grid-cols-3 gap-6" staggerDelay={0.08}>
+            <RevealList className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6" staggerDelay={0.08}>
               {[
                 { title: "Forgotten subscriptions", desc: "Services you signed up for but no longer use." },
                 { title: "Duplicate charges", desc: "The same charge appearing twice on your statement." },
@@ -125,13 +133,13 @@ export default function Home() {
         </section>
 
         {/* How it works */}
-        <section className="py-20 px-6 bg-white border-y border-black/10">
+        <section className="py-12 md:py-20 px-4 md:px-6 bg-white border-y border-black/10">
           <div className="max-w-6xl mx-auto">
             <FadeScale className="text-center mb-12">
-              <h2 className={`${ppAgrandirHeading.className} text-3xl md:text-5xl font-bold text-black mb-4`}>
+              <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-4`}>
                 Three steps. Zero effort.
               </h2>
-              <p className="text-lg text-black/60 max-w-xl mx-auto">
+              <p className="text-base md:text-lg text-black/60 max-w-xl mx-auto">
                 Connect your accounts. Sit back. We find the money companies owe you.
               </p>
             </FadeScale>
@@ -143,15 +151,15 @@ export default function Home() {
         </section>
 
         {/* Security & Trust Section */}
-        <section className="py-32 px-6">
+        <section className="py-16 md:py-32 px-4 md:px-6">
           <div className="max-w-5xl mx-auto">
             {/* Header */}
             <SlideIn direction="left" duration={0.8}>
-              <div className="max-w-2xl mb-20">
+              <div className="max-w-2xl mb-12 md:mb-20">
                 <p className="text-black/40 text-sm font-medium uppercase tracking-widest mb-4">
                   Security
                 </p>
-                <h2 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl font-bold text-black leading-[1.1] mb-6`}>
+                <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-4xl lg:text-5xl font-bold text-black leading-[1.1] mb-6`}>
                   We can see your transactions.<br />
                   <span className="text-black/30">We can never touch your money.</span>
                 </h2>
@@ -159,8 +167,8 @@ export default function Home() {
             </SlideIn>
 
             {/* Plaid Section */}
-            <div className="border-t border-black/10 py-16">
-              <div className="flex flex-col lg:flex-row gap-16">
+            <div className="border-t border-black/10 py-10 md:py-16">
+              <div className="flex flex-col lg:flex-row gap-10 md:gap-16">
                 {/* Left - Content */}
                 <SlideUp delay={0.1} className="flex-1">
                   <a
@@ -204,19 +212,23 @@ export default function Home() {
                 </SlideUp>
 
                 {/* Right - Stats */}
-                <SlideIn direction="right" delay={0.2} className="lg:w-72 flex-shrink-0">
-                  <div className="space-y-8">
+                <SlideIn direction="right" delay={0.2} className="lg:w-72 flex-shrink-0 grid grid-cols-3 lg:grid-cols-1 gap-4 lg:gap-0">
+                  <div className="lg:space-y-8">
                     <div>
-                      <p className={`${ppAgrandirHeading.className} text-5xl font-bold text-black mb-1`}>12K+</p>
-                      <p className="text-black/40 text-sm">Banks connected</p>
+                      <p className={`${ppAgrandirHeading.className} text-3xl md:text-5xl font-bold text-black mb-1`}>12K+</p>
+                      <p className="text-black/40 text-xs md:text-sm">Banks connected</p>
                     </div>
+                  </div>
+                  <div className="lg:space-y-8">
                     <div>
-                      <p className={`${ppAgrandirHeading.className} text-5xl font-bold text-black mb-1`}>8K+</p>
-                      <p className="text-black/40 text-sm">Apps using Plaid</p>
+                      <p className={`${ppAgrandirHeading.className} text-3xl md:text-5xl font-bold text-black mb-1`}>8K+</p>
+                      <p className="text-black/40 text-xs md:text-sm">Apps using Plaid</p>
                     </div>
+                  </div>
+                  <div className="lg:space-y-8">
                     <div>
-                      <p className={`${ppAgrandirHeading.className} text-5xl font-bold text-black mb-1`}>0</p>
-                      <p className="text-black/40 text-sm">Security breaches</p>
+                      <p className={`${ppAgrandirHeading.className} text-3xl md:text-5xl font-bold text-black mb-1`}>0</p>
+                      <p className="text-black/40 text-xs md:text-sm">Security breaches</p>
                     </div>
                   </div>
                 </SlideIn>
@@ -224,8 +236,8 @@ export default function Home() {
             </div>
 
             {/* FAQ Section */}
-            <div className="border-t border-black/10 py-16">
-              <div className="flex flex-col lg:flex-row gap-12">
+            <div className="border-t border-black/10 py-10 md:py-16">
+              <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
                 <BounceFade className="lg:w-72 flex-shrink-0">
                   <p className="text-black/40 text-sm font-medium uppercase tracking-widest mb-2">
                     Q&A
@@ -269,7 +281,7 @@ export default function Home() {
             </div>
 
             {/* Trust Points */}
-            <RevealList className="border-t border-black/10 pt-16 grid md:grid-cols-3 gap-12" staggerDelay={0.12}>
+            <RevealList className="border-t border-black/10 pt-10 md:pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12" staggerDelay={0.12}>
               <RevealItem>
                 <h4 className="font-semibold text-black mb-2">256-bit encryption</h4>
                 <p className="text-black/50 text-sm leading-relaxed">
@@ -293,9 +305,9 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 px-6">
+        <section className="py-12 md:py-20 px-4 md:px-6">
           <FadeScale delay={0.1}>
-            <div className="max-w-2xl mx-auto text-center border-t border-black/10 pt-20">
+            <div className="max-w-2xl mx-auto text-center border-t border-black/10 pt-12 md:pt-20">
               <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
                 Ready to find your leaks?
               </h2>
@@ -303,7 +315,7 @@ export default function Home() {
                 Free scan. See exactly what you're losing.
               </p>
               <Link href="/signup">
-                <Button size="lg" className={`${ppAgrandirHeading.className} h-12 px-8 rounded-full bg-[#0F172A] hover:bg-[#020617] text-white font-bold text-base transition-all active:scale-95 border-0`}>
+                <Button size="lg" className={`${ppAgrandirHeading.className} h-12 px-8 rounded-xl bg-[#0F172A] hover:bg-[#020617] hover:scale-[0.98] text-white font-bold text-base transition-all active:scale-95 border-0`}>
                   Scan My Accounts
                 </Button>
               </Link>

@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react'
 import { useUser } from '@/hooks/use-user'
 import { createClient } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
-import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts";
+import { ppAgrandirHeading, sfProDisplay } from "@/app/fonts"
+import { LiquidGlass } from './liquid-glass'
 
 export function Navbar() {
     const { user, loading } = useUser()
@@ -41,44 +42,45 @@ export function Navbar() {
 
     return (
         <header
-            className={`sticky top-0 z-50 w-full transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+            className={`sticky top-0 z-50 w-full transition-all duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
         >
-            <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-2">
-                    <span className={`${ppAgrandirHeading.className} text-2xl font-extrabold text-black tracking-tight`}>Pockret</span>
-                </Link>
+            <LiquidGlass>
+                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+                    <Link href="/" className="flex items-center gap-2">
+                        <span className={`${ppAgrandirHeading.className} text-2xl font-extrabold text-black tracking-tight`}>Pockret</span>
+                    </Link>
 
-                <div className="flex items-center gap-4 ml-auto">
+                    <div className="flex items-center gap-4 ml-auto">
 
-
-                    {!loading && (
-                        <>
-                            {user ? (
-                                <div className="flex items-center gap-6">
-                                    <Link
-                                        href="/dashboard"
-                                        className="text-sm text-black/50 hover:text-black transition-colors"
-                                    >
-                                        Dashboard
+                        {!loading && (
+                            <>
+                                {user ? (
+                                    <div className="flex items-center gap-6">
+                                        <Link
+                                            href="/dashboard"
+                                            className="text-sm text-black/50 hover:text-black transition-colors"
+                                        >
+                                            Dashboard
+                                        </Link>
+                                        <Link
+                                            href="/profile"
+                                            className="text-sm text-black/50 hover:text-black transition-colors"
+                                        >
+                                            Settings
+                                        </Link>
+                                    </div>
+                                ) : (
+                                    <Link href="/signup">
+                                        <button className={`${ppAgrandirHeading.className} px-5 py-2.5 text-sm font-bold text-white bg-[#0F172A] hover:bg-[#020617] hover:scale-[0.98] active:scale-95 rounded-xl transition-all cursor-pointer`}>
+                                            Scan My Accounts
+                                        </button>
                                     </Link>
-                                    <Link
-                                        href="/profile"
-                                        className="text-sm text-black/50 hover:text-black transition-colors"
-                                    >
-                                        Settings
-                                    </Link>
-                                </div>
-                            ) : (
-                                <Link href="/login">
-                                    <button className={`${sfProDisplay.className} px-4 py-2 text-sm font-medium text-black/60 hover:text-black transition-colors duration-200 cursor-pointer`}>
-                                        Sign In
-                                    </button>
-                                </Link>
-                            )}
-                        </>
-                    )}
+                                )}
+                            </>
+                        )}
+                    </div>
                 </div>
-            </div>
+            </LiquidGlass>
         </header>
     )
 }

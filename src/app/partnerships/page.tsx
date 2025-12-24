@@ -142,7 +142,7 @@ export default function PartnershipsPage() {
                         </p>
                         <Link
                             href="mailto:partnerships@pockret.com"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white font-medium rounded-full hover:bg-black/90 transition-colors"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-black text-white font-medium rounded-xl hover:bg-black/90 transition-colors"
                         >
                             Get in touch
                             <ArrowRight className="w-4 h-4" />
