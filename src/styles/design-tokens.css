@@ -1,0 +1,208 @@
+/**
+ * Pockret Design System
+ * "Jony Ive Core" - Prismatic Intelligence Palette
+ * 
+ * Philosophy: Premium multicolor (Apple Intelligence-like) but more luxurious.
+ * The rainbow is a *material*, not decoration.
+ * Rule: 90% UI = neutrals. Multicolor only as glow / accent / signal.
+ */
+
+/* =============================================================================
+   1. BASE "GRAPHITE STUDIO" - The foundation
+   ============================================================================= */
+
+:root {
+    /* Dark Mode Base (Primary) */
+    --ink: #0B0D12;
+    /* Main background */
+    --graphite: #121621;
+    /* Cards, elevated surfaces */
+    --slate: #1A2232;
+    /* Secondary surfaces */
+    --fog: #2A3448;
+    /* Borders, dividers */
+    --paper: #F4F6FA;
+    /* Primary text */
+    --mist: #B8C0D0;
+    /* Secondary text */
+
+    /* =============================================================================
+     2. SPECTRUM "PRISMATIC INTELLIGENCE" - Premium multicolor
+     ============================================================================= */
+
+    --violet-iris: #7B61FF;
+    --indigo-deep: #4F7CFF;
+    --azure: #12BFFF;
+    --aqua: #00E0C6;
+    --lime-soft: #A6FF4D;
+    --amber: #FFC24A;
+    --rose-magenta: #FF4FD8;
+
+    /* =============================================================================
+     3. LUXURY HIGHLIGHTS - The "secret sauce"
+     ============================================================================= */
+
+    --pearl-glow: #F7FAFF;
+    /* Micro-reflections, specular */
+    --electric-lilac: #CBB7FF;
+    /* Small glows/points, not text */
+
+    /* =============================================================================
+     4. GRADIENTS - Ready to use
+     ============================================================================= */
+
+    /* A) Prism Core - Main icon/halo gradient (radial) */
+    --gradient-prism-core: radial-gradient(circle at center,
+            #F7FAFF 0%,
+            #7B61FF 15%,
+            #12BFFF 35%,
+            #00E0C6 50%,
+            #A6FF4D 65%,
+            #FFC24A 80%,
+            #FF4FD8 100%);
+
+    /* B) Refund Wave - "Money back" state (linear) */
+    --gradient-refund-wave: linear-gradient(90deg,
+            #4F7CFF 0%,
+            #12BFFF 33%,
+            #00E0C6 66%,
+            #A6FF4D 100%);
+
+    /* C) Alert Luxury - Elegant danger (linear) */
+    --gradient-alert-luxury: linear-gradient(90deg,
+            #FF4FD8 0%,
+            #FFC24A 100%);
+
+    /* D) Pockret Signature - Indigo → Aqua (brand identity) */
+    --gradient-pockret-signature: linear-gradient(135deg,
+            #4F7CFF 0%,
+            #12BFFF 50%,
+            #00E0C6 100%);
+
+    /* E) Glow Effect - For background glows */
+    --gradient-glow: radial-gradient(ellipse at center,
+            rgba(75, 124, 255, 0.4) 0%,
+            rgba(18, 191, 255, 0.2) 40%,
+            transparent 70%);
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+/* Backgrounds */
+.bg-ink {
+    background-color: var(--ink);
+}
+
+.bg-graphite {
+    background-color: var(--graphite);
+}
+
+.bg-slate {
+    background-color: var(--slate);
+}
+
+/* Text */
+.text-paper {
+    color: var(--paper);
+}
+
+.text-mist {
+    color: var(--mist);
+}
+
+/* Borders */
+.border-fog {
+    border-color: var(--fog);
+}
+
+/* Spectrum Colors */
+.text-violet-iris {
+    color: var(--violet-iris);
+}
+
+.text-indigo-deep {
+    color: var(--indigo-deep);
+}
+
+.text-azure {
+    color: var(--azure);
+}
+
+.text-aqua {
+    color: var(--aqua);
+}
+
+.text-lime-soft {
+    color: var(--lime-soft);
+}
+
+.text-amber {
+    color: var(--amber);
+}
+
+.text-rose-magenta {
+    color: var(--rose-magenta);
+}
+
+/* Gradients */
+.gradient-prism-core {
+    background: var(--gradient-prism-core);
+}
+
+.gradient-refund-wave {
+    background: var(--gradient-refund-wave);
+}
+
+.gradient-alert-luxury {
+    background: var(--gradient-alert-luxury);
+}
+
+.gradient-pockret-signature {
+    background: var(--gradient-pockret-signature);
+}
+
+/* Glow Effects */
+.glow-signature {
+    box-shadow:
+        0 0 60px rgba(79, 124, 255, 0.3),
+        0 0 120px rgba(18, 191, 255, 0.2);
+}
+
+.glow-subtle {
+    box-shadow: 0 0 40px rgba(79, 124, 255, 0.15);
+}
+
+/* Text Gradient (rare use only - e.g., "PRO" badge) */
+.text-gradient-signature {
+    background: var(--gradient-pockret-signature);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* =============================================================================
+   DESIGN RULES (Comments for reference)
+   ============================================================================= */
+
+/*
+ * USAGE INTENSITY:
+ * - Normal UI: 10-25% spectrum visibility
+ * - "Moment" (success, refund): max 40%
+ *
+ * WHERE MULTICOLOR LIVES:
+ * - Halo behind icons
+ * - Loading / Scanning animations
+ * - Success / Refund moments
+ * - Small highlights in icons/mascot
+ *
+ * NEVER:
+ * - Rainbow text (except rare micro-word like "PRO")
+ * - Pure red (use rose-magenta → amber for danger)
+ *
+ * POCKRET IDENTITY:
+ * - Signature gradient = Indigo → Azure → Aqua
+ * - Rose/Amber only as accents
+ * - No pure red ever
+ */

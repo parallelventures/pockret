@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Pockret - Find Your Forgotten Money",
   description: "Discover and recover lost assets, insurance policies, and forgotten accounts securely with Pockret.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon.png",
   },
 };
 

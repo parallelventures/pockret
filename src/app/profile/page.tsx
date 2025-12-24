@@ -6,6 +6,7 @@ import { SignOutButton } from '@/components/sign-out-button'
 import { ProfileForm } from '@/components/profile-form'
 import Link from 'next/link'
 import { LinkedAccountsSectionWrapper } from '@/components/linked-accounts-section-wrapper'
+import { getSubscriptionInfo } from '@/app/actions/subscription'
 
 export default async function ProfilePage() {
     const supabase = await createClient()
@@ -24,8 +25,11 @@ export default async function ProfilePage() {
         .eq('id', user.id)
         .single()
 
+    // Get subscription status from synced Stripe data
+    const subscriptionInfo = await getSubscriptionInfo()
+
     const userName = user.user_metadata?.full_name || 'User'
-    const plan = userDetails?.plan || 'Free'
+    const plan = subscriptionInfo.plan
 
     return (
         <div className={`${sfProDisplay.className} min-h-screen flex flex-col bg-[#F9FAFB]`}>

@@ -15,9 +15,10 @@ export function DraggableIcon({ src, className = '', style = {}, appearDelay = 0
     const s = useRef({
         x: 0,
         y: 0,
+        floatY: 0,
         vx: 0,
         vy: 0,
-        rotation: (Math.random() - 0.5) * 10, // Fixed rotation, never changes in idle
+        rotation: (Math.random() - 0.5) * 10,
         scale: 0,
         opacity: 0,
         blur: 0,
@@ -27,13 +28,16 @@ export function DraggableIcon({ src, className = '', style = {}, appearDelay = 0
         gone: false,
         lastX: 0,
         lastY: 0,
-        lastTime: 0
+        lastTime: 0,
+        floatPhase: Math.random() * Math.PI * 2,
+        floatSpeed: 0.8 + Math.random() * 0.4,
+        idleStartTime: 0 // When the icon entered idle state
     }).current
 
     const apply = useCallback(() => {
         const el = elRef.current
         if (!el) return
-        el.style.transform = `translate(${s.x}px, ${s.y}px) rotate(${s.rotation}deg) scale(${s.scale})`
+        el.style.transform = `translate(${s.x}px, ${s.y + s.floatY}px) rotate(${s.rotation}deg) scale(${s.scale})`
         el.style.opacity = String(s.opacity)
         el.style.filter = s.blur > 0.1 ? `blur(${s.blur}px)` : 'none'
     }, [s])
@@ -69,11 +73,22 @@ export function DraggableIcon({ src, className = '', style = {}, appearDelay = 0
                     s.visible = true
                     s.scale = 1
                     s.opacity = 1
+                    s.idleStartTime = now // Mark when we entered idle
                 }
                 apply()
             }
 
-            // NO rotation animation in idle - rotation stays fixed
+            // Floating animation in idle (with fade-in)
+            if (s.visible && !s.dragging && !s.ejecting) {
+                // Start idle time if not set
+                if (s.idleStartTime === 0) s.idleStartTime = now
+
+                const t = now / 1000
+                const idleDuration = (now - s.idleStartTime) / 1000
+                const amplitude = Math.min(idleDuration / 1.5, 1) * 10 // Fade in amplitude over 1.5s
+                s.floatY = Math.sin(t * s.floatSpeed + s.floatPhase) * amplitude
+                apply()
+            }
 
             // Ejection
             if (s.ejecting) {
@@ -188,9 +203,13 @@ export function DraggableIcon({ src, className = '', style = {}, appearDelay = 0
         const el = elRef.current
         if (el) {
             const rect = el.getBoundingClientRect()
+            // Incorporate current floatY into y position before resetting
+            s.y += s.floatY
+            s.floatY = 0
+            s.idleStartTime = 0 // Reset so float fades in after release
+            // Center icon on cursor
             s.x += e.clientX - rect.left - rect.width / 2
             s.y += e.clientY - rect.top - rect.height / 2
-            apply()
         }
 
         s.dragging = true
@@ -199,6 +218,7 @@ export function DraggableIcon({ src, className = '', style = {}, appearDelay = 0
         s.vy = 0
         s.lastX = e.clientX
         s.lastY = e.clientY
+        apply()
     }, [s, apply])
 
     return (

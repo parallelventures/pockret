@@ -7,7 +7,7 @@ import { ppAgrandirHeading, sfProDisplay } from "../../fonts";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ArrowRight, Clock } from "lucide-react";
-import Image from "next/image";
+import { MeshGradient } from '@paper-design/shaders-react';
 
 const ArticleCTAGradient = dynamic(() => import("@/components/article-cta-gradient"), { ssr: false });
 
@@ -35,14 +35,35 @@ export default function SubscriptionTrapArticle() {
 
                     {/* Header */}
                     <header className="mb-12">
-                        <div className="mb-12">
-                            <Image
-                                src="/subscriptions.png"
-                                alt="Subscription costs illustration"
-                                width={800}
-                                height={400}
-                                className="w-full h-auto rounded-2xl"
+                        <div className="mb-12 relative rounded-2xl overflow-hidden">
+                            <MeshGradient
+                                speed={0}
+                                distortion={0}
+                                swirl={0.3}
+                                frame={42534.33200006084}
+                                scale={1.39}
+                                grainMixer={0.55}
+                                grainOverlay={0.11}
+                                colors={['#FFFFFF', '#78E9FF', '#00BBFF']}
+                                style={{ height: '320px', width: '100%' }}
                             />
+                            {/* App Icons Grid */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="grid grid-cols-6 gap-2 md:gap-3">
+                                    <img src="/icons/netflix.png" alt="Netflix" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/spotify.png" alt="Spotify" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/discord.png" alt="Discord" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/chatgpt.png" alt="ChatGPT" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/primevideo.png" alt="Prime Video" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/duolingo.png" alt="Duolingo" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/canva.png" alt="Canva" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/strava.png" alt="Strava" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/revolut.png" alt="Revolut" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/tinder.png" alt="Tinder" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/chess.png" alt="Chess" className="w-14 h-14 md:w-20 md:h-20" />
+                                    <img src="/icons/disneyplus.png" alt="Disney+" className="w-14 h-14 md:w-20 md:h-20" />
+                                </div>
+                            </div>
                         </div>
                         <h1 className={`${ppAgrandirHeading.className} text-4xl md:text-5xl font-bold text-black leading-none mb-3`}>
                             The Subscription Trap: How Recurring Payments Quietly Steal Your Future?

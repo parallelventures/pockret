@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { ppAgrandirHeading, sfProDisplay } from '@/app/fonts';
 import { usePlaidRecurring } from '@/hooks/use-plaid-recurring';
+import { useSubscription } from '@/hooks/use-subscription';
 import {
     DollarSign,
     RotateCcw,
@@ -37,6 +38,7 @@ export default function ResultsPage() {
     const router = useRouter();
     const [isLoaded, setIsLoaded] = useState(false);
     const { recurring, totalMonthly, isLoading } = usePlaidRecurring();
+    const { hasAccess, isLoading: isSubscriptionLoading } = useSubscription();
 
     useEffect(() => {
         // Animate in
@@ -48,8 +50,8 @@ export default function ResultsPage() {
         if (!recurring || recurring.length === 0) return [];
 
         return recurring.map((item, index) => {
-            // First 4 items are visible, rest are locked
-            const canView = index < 4;
+            // Premium users can view all, free users only first 4
+            const canView = hasAccess || index < 4;
 
             // Determine status based on amount and type
             let status = 'active';
@@ -73,7 +75,7 @@ export default function ResultsPage() {
                 canView,
             };
         });
-    }, [recurring]);
+    }, [recurring, hasAccess]);
 
     // Calculate totals
     const monthlySavings = useMemo(() => {

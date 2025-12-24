@@ -23,6 +23,22 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
+/* SwiftUI-like smooth corners (squircle/superellipse) */
+/* Progressive enhancement - falls back to regular border-radius */
+.rounded-full,
+[class*="rounded-full"] {
+  corner-shape: superellipse;
+}
+
+.rounded-2xl,
+.rounded-3xl,
+.rounded-xl,
+[class*="rounded-2xl"],
+[class*="rounded-3xl"],
+[class*="rounded-xl"] {
+  corner-shape: superellipse;
+}
+
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
@@ -64,4 +80,31 @@ body {
 
 .animate-pop-in {
   animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@keyframes tooltip-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(-50%);
+  }
 }
