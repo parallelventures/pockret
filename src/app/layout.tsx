@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ppAgrandirHeading, sfProDisplayRegular } from "./fonts";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Pockret - Find Your Forgotten Money",
@@ -22,6 +23,7 @@ export default function RootLayout({
         style={{ fontFamily: 'var(--font-sf-pro-regular), sans-serif' }}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
