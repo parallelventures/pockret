@@ -150,7 +150,7 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                             </div>
                         </SlideUp>
 
-                        <div className="border-t border-black/10">
+                        <div>
                             {[
                                 { title: "Forgotten subscriptions", desc: "Services you signed up for but no longer use" },
                                 { title: "Duplicate charges", desc: "The same charge appearing twice on your statement" },
@@ -160,7 +160,7 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                                 { title: "Bank errors", desc: "Processing mistakes and unauthorized fees" },
                             ].map((item, index) => (
                                 <SlideUp key={index} delay={index * 0.05}>
-                                    <div className="flex flex-col md:flex-row md:items-center justify-between py-5 md:py-6 border-b border-black/10 group">
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between py-5 md:py-6 group">
                                         <h3 className={`${ppAgrandirHeading.className} text-lg md:text-xl font-semibold text-black group-hover:text-black/70 transition-colors`}>
                                             {item.title}
                                         </h3>
@@ -175,7 +175,7 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                 </section>
 
                 {/* How it works */}
-                <section className="py-12 md:py-20 px-4 md:px-6 bg-white border-y border-black/10">
+                <section className="py-12 md:py-20 px-4 md:px-6 bg-white">
                     <div className="max-w-6xl mx-auto">
                         <FadeScale className="text-center mb-12">
                             <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-4xl lg:text-5xl font-bold text-black mb-4`}>
@@ -212,7 +212,7 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                         </SlideIn>
 
                         {/* Plaid Section */}
-                        <div className="border-t border-black/10 py-10 md:py-16">
+                        <div className="py-10 md:py-16">
                             <div className="flex flex-col lg:flex-row gap-10 md:gap-16">
                                 {/* Left - Content */}
                                 <SlideUp delay={0.1} className="flex-1">
@@ -281,7 +281,7 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                         </div>
 
                         {/* FAQ Section */}
-                        <div className="border-t border-black/10 py-10 md:py-16">
+                        <div className="py-10 md:py-16">
                             <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
                                 <BounceFade className="lg:w-72 flex-shrink-0">
                                     <p className="text-black/40 text-sm font-medium uppercase tracking-widest mb-2">
@@ -326,7 +326,7 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                         </div>
 
                         {/* Trust Points */}
-                        <RevealList className="border-t border-black/10 pt-10 md:pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12" staggerDelay={0.12}>
+                        <RevealList className="pt-10 md:pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12" staggerDelay={0.12}>
                             <RevealItem>
                                 <h4 className="font-semibold text-black mb-2">256-bit encryption</h4>
                                 <p className="text-black/50 text-sm leading-relaxed">
@@ -352,7 +352,7 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                 {/* CTA */}
                 <section className="py-12 md:py-20 px-4 md:px-6">
                     <FadeScale delay={0.1}>
-                        <div className="max-w-2xl mx-auto text-center border-t border-black/10 pt-12 md:pt-20">
+                        <div className="max-w-2xl mx-auto text-center pt-12 md:pt-20">
                             <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
                                 {hero.closingHeadline || defaultHero.closingHeadline}
                             </h2>
