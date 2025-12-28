@@ -17,7 +17,11 @@ const videoReviews = [
     'https://res.cloudinary.com/do3c8fqwu/video/upload/v1766940890/snaptik_7545592172720983327_v2_npumny.mp4',
 ]
 
-export function VideoReviewsCarousel() {
+interface VideoReviewsCarouselProps {
+    compact?: boolean
+}
+
+export function VideoReviewsCarousel({ compact = false }: VideoReviewsCarouselProps) {
     const [activeIndex, setActiveIndex] = useState(0)
     const [unmutedIndex, setUnmutedIndex] = useState<number | null>(null)
     const scrollRef = useRef<HTMLDivElement>(null)
@@ -96,7 +100,7 @@ export function VideoReviewsCarousel() {
     }, [activeIndex, unmutedIndex])
 
     return (
-        <section className="py-16 md:py-24">
+        <section className={compact ? "py-6" : "py-16 md:py-24"}>
             {/* Header */}
             <div className="max-w-6xl mx-auto px-4 md:px-6 mb-8 md:mb-12">
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -130,49 +134,73 @@ export function VideoReviewsCarousel() {
             </div>
 
             {/* Video Carousel */}
-            <div
-                ref={scrollRef}
-                className="flex gap-4 overflow-x-auto scrollbar-hide py-2 px-4 md:px-[max(1rem,calc((100vw-72rem)/2+1.5rem))]"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-                {videoReviews.map((src, index) => (
-                    <div
-                        key={index}
-                        className={`relative flex-shrink-0 w-[180px] md:w-[200px] aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${activeIndex === index
+            <div className="relative">
+                {/* Gradient fade edges with blur */}
+                <div
+                    className="absolute left-0 top-0 bottom-0 w-24 md:w-32 z-10 pointer-events-none"
+                    style={{
+                        background: 'linear-gradient(to right, #F9FAFB 0%, #F9FAFB 20%, transparent 100%)',
+                        maskImage: 'linear-gradient(to right, black, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to right, black, transparent)',
+                        backdropFilter: 'blur(4px)',
+                        WebkitBackdropFilter: 'blur(4px)',
+                    }}
+                />
+                <div
+                    className="absolute right-0 top-0 bottom-0 w-24 md:w-32 z-10 pointer-events-none"
+                    style={{
+                        background: 'linear-gradient(to left, #F9FAFB 0%, #F9FAFB 20%, transparent 100%)',
+                        maskImage: 'linear-gradient(to left, black, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to left, black, transparent)',
+                        backdropFilter: 'blur(4px)',
+                        WebkitBackdropFilter: 'blur(4px)',
+                    }}
+                />
+
+                <div
+                    ref={scrollRef}
+                    className="flex gap-4 overflow-x-auto scrollbar-hide py-2 px-4 md:px-[max(1rem,calc((100vw-72rem)/2+1.5rem))]"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                    {videoReviews.map((src, index) => (
+                        <div
+                            key={index}
+                            className={`relative flex-shrink-0 w-[180px] md:w-[200px] aspect-[9/16] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${activeIndex === index
                                 ? 'ring-2 ring-black/20 scale-[1.02]'
                                 : 'opacity-60 hover:opacity-100'
-                            }`}
-                        onClick={() => handleVideoClick(index)}
-                    >
-                        <video
-                            ref={el => { videoRefs.current[index] = el }}
-                            src={src}
-                            className="w-full h-full object-cover"
-                            loop
-                            muted
-                            playsInline
-                            autoPlay
-                        />
+                                }`}
+                            onClick={() => handleVideoClick(index)}
+                        >
+                            <video
+                                ref={el => { videoRefs.current[index] = el }}
+                                src={src}
+                                className="w-full h-full object-cover"
+                                loop
+                                muted
+                                playsInline
+                                autoPlay
+                            />
 
-                        {/* Sound indicator */}
-                        <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
-                            {unmutedIndex === index ? (
-                                <Volume2 className="w-4 h-4 text-white" />
-                            ) : (
-                                <VolumeX className="w-4 h-4 text-white" />
+                            {/* Sound indicator */}
+                            <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
+                                {unmutedIndex === index ? (
+                                    <Volume2 className="w-4 h-4 text-white" />
+                                ) : (
+                                    <VolumeX className="w-4 h-4 text-white" />
+                                )}
+                            </div>
+
+                            {/* Tap hint on hover */}
+                            {unmutedIndex !== index && (
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                    <div className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-sm">
+                                        <span className="text-white text-xs font-medium">Tap for sound</span>
+                                    </div>
+                                </div>
                             )}
                         </div>
-
-                        {/* Tap hint on hover */}
-                        {unmutedIndex !== index && (
-                            <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                                <div className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-sm">
-                                    <span className="text-white text-xs font-medium">Tap for sound</span>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
 
             {/* Mobile Navigation */}

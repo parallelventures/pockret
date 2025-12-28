@@ -6,6 +6,8 @@ import { ppAgrandirHeading, sfProDisplay } from '@/app/fonts';
 import { createCheckoutSession } from '@/app/actions/stripe';
 import { STRIPE_PRICES } from '@/lib/stripe-config';
 import { PaymentButtonWrapper } from '@/components/payment-button-wrapper';
+import { AppIconsMarquee } from '@/components/app-icons-marquee';
+import { VideoReviewsCarousel } from '@/components/video-reviews-carousel';
 import {
     Zap,
     FileText,
@@ -18,10 +20,16 @@ import {
     Sparkles
 } from 'lucide-react';
 
-const features = [
-    { icon: Zap, title: 'One-click cancellation', description: 'Guided + pre-filled forms' },
-    { icon: FileText, title: 'Refund request generator', description: 'Policy-aware templates' },
-    { icon: Scale, title: 'Settlements & class actions', description: 'Matching + claim checklist' },
+const monthlyFeatures = [
+    { icon: Zap, title: 'Cancel subscriptions', description: 'Pre-filled forms to stop recurring charges.' },
+    { icon: FileText, title: 'Basic refund requests', description: 'Templates for common refund situations.' },
+];
+
+const lifetimeFeatures = [
+    { icon: Zap, title: 'Cancel in one tap', description: 'We write the message. You just hit send.' },
+    { icon: FileText, title: 'Get your money back', description: 'Auto-generated refund requests that actually work.' },
+    { icon: Scale, title: 'Free money waiting', description: 'Class actions & settlements you qualify for.' },
+    { icon: Sparkles, title: 'Forever access', description: 'All future features included. No recurring fees.' },
 ];
 
 const plans = [
@@ -164,13 +172,27 @@ export default function UpgradePage() {
                     <span className="text-sm">Back to results</span>
                 </button>
 
-                {/* Header */}
+                {/* Header with App Icons Marquee */}
                 <div className={`text-center mb-6 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                    <img
-                        src="/header.png"
-                        alt="Recovery"
-                        className="w-full max-w-md mx-auto mb-4 rounded-2xl"
-                    />
+                    <div className="mb-4 -mx-6 overflow-hidden">
+                        <AppIconsMarquee
+                            icons={[
+                                '/icons/netflix.png',
+                                '/icons/spotify.png',
+                                '/icons/discord.png',
+                                '/icons/duolingo.png',
+                                '/icons/disneyplus.png',
+                                '/icons/chatgpt.png',
+                                '/icons/canva.png',
+                                '/icons/primevideo.png',
+                                '/icons/strava.png',
+                                '/icons/revolut.png',
+                                '/icons/tinder.png',
+                                '/icons/chess.png'
+                            ]}
+                            speed={40}
+                        />
+                    </div>
                     <p className="text-black/50">
                         {currentRecovery.label}
                     </p>
@@ -237,7 +259,7 @@ export default function UpgradePage() {
                     <p className="text-black/40 text-xs font-medium mb-4">WHAT YOU UNLOCK</p>
 
                     <div className="space-y-4">
-                        {features.map((feature, index) => {
+                        {(selectedPlan === 'lifetime' ? lifetimeFeatures : monthlyFeatures).map((feature, index) => {
                             const Icon = feature.icon;
                             return (
                                 <div key={index} className="flex items-start gap-3">
@@ -267,10 +289,9 @@ export default function UpgradePage() {
                             className={`
                                 w-full p-4 rounded-2xl border-2 text-left transition-all duration-200 cursor-pointer
                                 ${selectedPlan === plan.id
-                                    ? 'border-black bg-black/[0.02]'
+                                    ? 'border-black bg-black/[0.02] ring-2 ring-black'
                                     : 'border-transparent bg-white hover:border-black/10'
                                 }
-                                ${plan.popular ? 'ring-2 ring-black' : ''}
                             `}
                         >
                             <div className="flex items-center justify-between">
@@ -345,9 +366,9 @@ export default function UpgradePage() {
                             </span>
                         ) : (
                             <span>
-                                {selectedPlan === 'lifetime' && showApplePay
-                                    ? 'Or pay with card'
-                                    : `Get ${selectedPlan === 'lifetime' ? 'Lifetime Access' : 'Monthly Access'} — $${plans.find(p => p.id === selectedPlan)?.price}`
+                                {selectedPlan === 'lifetime'
+                                    ? 'Start recovering — $249'
+                                    : 'Start recovering — $39/mo'
                                 }
                             </span>
                         )}
@@ -383,6 +404,11 @@ export default function UpgradePage() {
                         <Check className="w-3 h-3" />
                         <span>Secure payment</span>
                     </div>
+                </div>
+
+                {/* Video Reviews */}
+                <div className="-mx-6 mt-8">
+                    <VideoReviewsCarousel compact />
                 </div>
 
                 {/* FAQ Section */}
