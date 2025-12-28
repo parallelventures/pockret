@@ -44,17 +44,40 @@ export function VariantLandingPage({ content }: VariantLandingPageProps) {
 
     // Track attribution on page load
     useEffect(() => {
-        const src = searchParams.get('src') || 'direct'
-        const acc = searchParams.get('acc') || ''
-        const campaign = searchParams.get('utm_campaign') || content.variant
+        // UTM parameters
+        const utmSource = searchParams.get('utm_source') || searchParams.get('src') || 'direct'
+        const utmMedium = searchParams.get('utm_medium') || ''
+        const utmCampaign = searchParams.get('utm_campaign') || content.variant
+        const utmContent = searchParams.get('utm_content') || ''
+        const utmTerm = searchParams.get('utm_term') || ''
+
+        // Custom tracking
+        const acc = searchParams.get('acc') || '' // TikTok account
+
+        // Ad platform click IDs
+        const gclid = searchParams.get('gclid') || '' // Google Ads
+        const fbclid = searchParams.get('fbclid') || '' // Facebook/Meta
+        const ttclid = searchParams.get('ttclid') || '' // TikTok Ads
 
         // Store in cookie for 30 days
         const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString()
-        document.cookie = `pockret_src=${src}; expires=${expires}; path=/`
+
+        // UTM cookies
+        document.cookie = `utm_source=${utmSource}; expires=${expires}; path=/`
+        document.cookie = `utm_medium=${utmMedium}; expires=${expires}; path=/`
+        document.cookie = `utm_campaign=${utmCampaign}; expires=${expires}; path=/`
+        document.cookie = `utm_content=${utmContent}; expires=${expires}; path=/`
+        document.cookie = `utm_term=${utmTerm}; expires=${expires}; path=/`
+
+        // Custom tracking cookies
         document.cookie = `pockret_acc=${acc}; expires=${expires}; path=/`
-        document.cookie = `pockret_campaign=${campaign}; expires=${expires}; path=/`
         document.cookie = `pockret_variant=${content.variant}; expires=${expires}; path=/`
         document.cookie = `pockret_landing=${window.location.pathname}; expires=${expires}; path=/`
+
+        // Ad click IDs (if present)
+        if (gclid) document.cookie = `gclid=${gclid}; expires=${expires}; path=/`
+        if (fbclid) document.cookie = `fbclid=${fbclid}; expires=${expires}; path=/`
+        if (ttclid) document.cookie = `ttclid=${ttclid}; expires=${expires}; path=/`
     }, [searchParams, content.variant])
 
     return (
