@@ -11,6 +11,7 @@ import { BlurFade, SlideIn, FadeScale, SlideUp, RevealList, RevealItem, BounceFa
 import { FAQ } from "@/components/faq";
 import { HowItWorksCarousel } from "@/components/how-it-works-carousel";
 import { AppIconsMarquee } from "@/components/app-icons-marquee";
+import { VideoReviewsCarousel } from "@/components/video-reviews-carousel";
 
 export interface HeroCopy {
     headline: string
@@ -131,38 +132,45 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                 </section>
 
                 {/* What we find */}
-                <section className="py-12 md:py-20 px-4 md:px-6">
-                    <div className="max-w-4xl mx-auto border-t border-black/10 pt-12 md:pt-20">
+                <section className="py-16 md:py-24 px-4 md:px-6">
+                    <div className="max-w-5xl mx-auto">
                         <SlideUp duration={0.7}>
-                            <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-4`}>
-                                Money you didn't know you were losing.
-                            </h2>
-                            <p className="text-black/60 mb-12 max-w-2xl">
-                                Most people are owed hundreds of dollars and have no idea. We find it for you.
-                            </p>
+                            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 md:mb-16">
+                                <div>
+                                    <p className="text-black/40 text-sm font-medium uppercase tracking-widest mb-3">
+                                        What we find
+                                    </p>
+                                    <h2 className={`${ppAgrandirHeading.className} text-2xl md:text-4xl font-bold text-black leading-tight`}>
+                                        Money you didn't know<br className="hidden md:block" /> you were losing.
+                                    </h2>
+                                </div>
+                                <p className="text-black/50 text-sm md:text-base max-w-sm md:text-right">
+                                    Most people are owed hundreds of dollars and have no idea.
+                                </p>
+                            </div>
                         </SlideUp>
 
-                        <RevealList className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6" staggerDelay={0.08}>
+                        <div className="border-t border-black/10">
                             {[
-                                { title: "Forgotten subscriptions", desc: "Services you signed up for but no longer use." },
-                                { title: "Duplicate charges", desc: "The same charge appearing twice on your statement." },
-                                { title: "Class action settlements", desc: "Lawsuits you're eligible for but didn't know about." },
-                                { title: "Hidden fees", desc: "Charges that were never properly disclosed to you." },
-                                { title: "Overcharges", desc: "When you paid more than you should have." },
-                                { title: "Bank errors", desc: "Processing mistakes and unauthorized fees." },
+                                { title: "Forgotten subscriptions", desc: "Services you signed up for but no longer use" },
+                                { title: "Duplicate charges", desc: "The same charge appearing twice on your statement" },
+                                { title: "Class action settlements", desc: "Lawsuits you're eligible for but didn't know about" },
+                                { title: "Hidden fees", desc: "Charges that were never properly disclosed to you" },
+                                { title: "Overcharges", desc: "When you paid more than you should have" },
+                                { title: "Bank errors", desc: "Processing mistakes and unauthorized fees" },
                             ].map((item, index) => (
-                                <RevealItem key={index}>
-                                    <div className="bg-white rounded-2xl p-6 border border-black/5 h-full">
-                                        <h3 className={`${ppAgrandirHeading.className} text-base font-bold text-black mb-2`}>
+                                <SlideUp key={index} delay={index * 0.05}>
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between py-5 md:py-6 border-b border-black/10 group">
+                                        <h3 className={`${ppAgrandirHeading.className} text-lg md:text-xl font-semibold text-black group-hover:text-black/70 transition-colors`}>
                                             {item.title}
                                         </h3>
-                                        <p className="text-black/50 text-sm">
+                                        <p className="text-black/40 text-sm md:text-base mt-1 md:mt-0 md:text-right max-w-sm">
                                             {item.desc}
                                         </p>
                                     </div>
-                                </RevealItem>
+                                </SlideUp>
                             ))}
-                        </RevealList>
+                        </div>
                     </div>
                 </section>
 
@@ -183,6 +191,9 @@ export function LandingPage({ variant = 'default', hero = defaultHero }: Landing
                         </SlideUp>
                     </div>
                 </section>
+
+                {/* Video Reviews */}
+                <VideoReviewsCarousel />
 
                 {/* Security & Trust Section */}
                 <section className="py-16 md:py-32 px-4 md:px-6">
