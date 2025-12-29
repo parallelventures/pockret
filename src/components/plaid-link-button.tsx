@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { usePlaidLink, PlaidLinkOptions, PlaidLinkOnSuccess, PlaidLinkOnExit } from 'react-plaid-link';
 import { Building2, Link2, Loader2, Plus, CheckCircle2 } from 'lucide-react';
 import { plaidFunctions } from '@/lib/plaid-edge-functions';
+import { markBankConnected, completeOnboarding } from '@/app/actions/onboarding';
 
 interface PlaidLinkButtonProps {
     onSuccess?: () => void;
@@ -61,6 +62,19 @@ export function PlaidLinkButton({
                 } catch (syncError) {
                     // Don't fail the whole flow if sync fails - it can be retried
                     console.error('Initial transaction sync failed:', syncError);
+                }
+
+                // Mark bank as connected and onboarding as complete in database
+                try {
+                    await markBankConnected();
+
+                    // Get goal from localStorage if available
+                    const goal = typeof window !== 'undefined'
+                        ? localStorage.getItem('onboarding_goal')
+                        : null;
+                    await completeOnboarding({ goal: goal || undefined });
+                } catch (dbError) {
+                    console.error('Failed to update user profile:', dbError);
                 }
 
                 setIsSuccess(true);

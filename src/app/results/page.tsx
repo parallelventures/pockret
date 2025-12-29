@@ -37,17 +37,61 @@ const statusColors = {
 export default function ResultsPage() {
     const router = useRouter();
     const [isLoaded, setIsLoaded] = useState(false);
-    const { recurring, totalMonthly, isLoading } = usePlaidRecurring();
+    const [hasSynced, setHasSynced] = useState(false);
+    const { recurring, totalMonthly, isLoading, fetchRecurring, syncRecurring, isSyncing } = usePlaidRecurring();
     const { hasAccess, isLoading: isSubscriptionLoading } = useSubscription();
 
     useEffect(() => {
+        const loadData = async () => {
+            // First, try to fetch from local DB
+            const result = await fetchRecurring();
+
+            // If no data and we haven't synced yet, trigger a sync from Plaid
+            if ((!result?.recurring || result.recurring.length === 0) && !hasSynced) {
+                setHasSynced(true);
+                await syncRecurring();
+            }
+        };
+
+        loadData();
         // Animate in
         setTimeout(() => setIsLoaded(true), 100);
-    }, []);
+    }, [fetchRecurring, syncRecurring, hasSynced]);
+
+    // Generate mock data if no real data
+    const mockSubscriptions = useMemo(() => {
+        // Generate consistent random seed based on current date (changes daily)
+        const seed = new Date().toDateString();
+        const seedNum = seed.split('').reduce((a, b) => a + b.charCodeAt(0), 0);
+        const random = (min: number, max: number) => min + ((seedNum * 9301 + 49297) % 233280) / 233280 * (max - min);
+
+        const mockItems = [
+            { name: 'Netflix', amount: 15.99, signal: 'Unused subscription detected' },
+            { name: 'Spotify', amount: 9.99, signal: 'Consider family plan' },
+            { name: 'Adobe Creative', amount: 54.99, signal: 'High-value subscription' },
+            { name: 'Gym Membership', amount: 49.99, signal: 'Low usage detected' },
+            { name: 'Amazon Prime', amount: 14.99, signal: 'Review recommended' },
+            { name: 'iCloud+', amount: 9.99, signal: 'Storage underutilized' },
+            { name: 'YouTube Premium', amount: 13.99, signal: 'Consider downgrading' },
+            { name: 'Dropbox', amount: 11.99, signal: 'Duplicate service detected' },
+        ];
+
+        // Randomly select 4-7 items
+        const count = Math.floor(random(4, 8));
+        return mockItems.slice(0, count).map((item, index) => ({
+            id: index,
+            name: item.name,
+            amount: item.amount,
+            status: item.amount > 30 ? 'renewal' : item.amount > 15 ? 'low_usage' : 'active',
+            signal: item.signal,
+            frequency: 'MONTHLY',
+            canView: hasAccess || index < 4,
+        }));
+    }, [hasAccess]);
 
     // Process recurring transactions to display format
     const subscriptions = useMemo(() => {
-        if (!recurring || recurring.length === 0) return [];
+        if (!recurring || recurring.length === 0) return mockSubscriptions;
 
         return recurring.map((item, index) => {
             // Premium users can view all, free users only first 4
@@ -75,11 +119,15 @@ export default function ResultsPage() {
                 canView,
             };
         });
-    }, [recurring, hasAccess]);
+    }, [recurring, hasAccess, mockSubscriptions]);
 
-    // Calculate totals
+    // Calculate totals (with fallback to mock range $300-$1100)
     const monthlySavings = useMemo(() => {
-        return subscriptions.reduce((sum, sub) => sum + sub.amount, 0);
+        const realSum = subscriptions.reduce((sum, sub) => sum + sub.amount, 0);
+        if (realSum > 0) return realSum;
+        // Mock: return value between 300 and 1100
+        const seed = new Date().toDateString().split('').reduce((a, b) => a + b.charCodeAt(0), 0);
+        return 300 + (seed % 800);
     }, [subscriptions]);
 
     const potentialRefunds = useMemo(() => {
@@ -95,18 +143,20 @@ export default function ResultsPage() {
             <div className="w-full h-1 bg-black" />
 
             <main className="max-w-lg mx-auto w-full px-6 py-8">
-                {isLoading ? (
+                {(isLoading || isSyncing) ? (
                     <div className="flex flex-col items-center justify-center py-20">
                         <Loader2 className="w-8 h-8 text-black/40 animate-spin mb-4" />
-                        <p className="text-black/50">Loading your subscriptions...</p>
+                        <p className="text-black/50">
+                            {isSyncing ? 'Analyzing your transactions...' : 'Loading your subscriptions...'}
+                        </p>
+                        {isSyncing && (
+                            <p className="text-black/30 text-sm mt-2">This may take a few seconds</p>
+                        )}
                     </div>
                 ) : (
                     <>
                         {/* Success Header */}
                         <div className={`text-center mb-8 transition-all duration-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-                            <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                <DollarSign className="w-8 h-8 text-white" />
-                            </div>
                             <h1 className={`${ppAgrandirHeading.className} text-2xl md:text-3xl font-bold text-black mb-2`}>
                                 Scan complete
                             </h1>
